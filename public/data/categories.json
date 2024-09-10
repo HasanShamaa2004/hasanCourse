@@ -1,0 +1,34 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Technology",
+      "image": "/images/tecno.webp",
+      "description": "Explore the latest advancements in technology. From cutting-edge software development and artificial intelligence to hardware innovations and cybersecurity, our technology courses will help you stay ahead in the ever-evolving tech world. Whether you're interested in coding, data analysis, or emerging technologies, our programs provide in-depth knowledge and hands-on experience to prepare you for a successful career in tech."
+    },
+    {
+      "id": 2,
+      "title": "Business",
+      "image": "/images/business.webp",
+      "description": "Enhance your business acumen with comprehensive courses on management, marketing, finance, and entrepreneurship. Learn effective strategies to drive growth, optimize operations, and lead successful ventures. Our business programs cover everything from strategic planning and market analysis to financial management and leadership skills. Equip yourself with the tools needed to navigate the complexities of the business world and achieve your professional goals."
+    },
+    {
+      "id": 3,
+      "title": "Design",
+      "image": "/images/design.webp",
+      "description": "Dive into the world of Design with courses that span a wide range of disciplines including graphic design, digital art, painting, sculpture, and more. Explore the principles of design, color theory, and creative techniques to develop your artistic vision and technical skills. Whether you're interested in creating stunning visual content or innovative product designs, our programs provide the foundation and advanced knowledge needed to excel in the creative industry."
+    },
+    {
+      "id": 4,
+      "title": "Health",
+      "image": "/images/health.webp",
+      "description": "Explore a variety of courses related to health and wellness, from fitness training and nutrition to mental health and holistic therapies. Our programs offer comprehensive insights into how to improve overall well-being, maintain a balanced lifestyle, and address health challenges. Learn about physical fitness, healthy eating habits, mental health strategies, and preventative care to lead a healthier and more fulfilling life."
+    },
+    {
+      "id": 5,
+      "title": "UI/UX",
+      "image": "/images/uiux1.webp",
+      "description": "Master the art of creating intuitive and engaging user interfaces with our UI/UX courses. Learn about user research, wireframing, prototyping, and usability testing. Our programs cover the full spectrum of UI/UX design, from understanding user needs to implementing effective design solutions. Develop skills in creating user-centric designs, enhancing user experiences, and applying best practices to build aesthetically pleasing and functional digital products."
+    }
+  ]
+}
