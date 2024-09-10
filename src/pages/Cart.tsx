@@ -16,7 +16,7 @@ const Cart: FC = () => {
   } = useCartStore();
 
   return (
-    <section className="container mt-16 mx-auto py-8 px-6">
+    <main className="container mt-16 mx-auto py-8 px-6">
       <SEO
         title="Your Cart - Review and Manage Your Selected Courses"
         description="Review the courses you have added to your cart. Adjust quantities, remove items, or proceed to checkout. Manage your selected courses easily."
@@ -24,7 +24,7 @@ const Cart: FC = () => {
         author="Hasan Shamaa"
       />
       <h1 className="text-4xl font-bold mb-6 text-center">Cart Page</h1>
-      <div className="p-4 rounded-lg mb-8">
+      <section className="p-4 rounded-lg mb-8">
         {courses.length === 0 ? (
           <p className="text-center text-gray-700">Your cart is empty</p>
         ) : (
@@ -92,8 +92,8 @@ const Cart: FC = () => {
             </div>
           </div>
         )}
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 

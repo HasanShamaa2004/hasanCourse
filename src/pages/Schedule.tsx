@@ -92,7 +92,7 @@ const Schedule = () => {
   }, []);
 
   return (
-    <section className="container px-6 mx-auto py-8">
+    <main className="container px-6 mx-auto py-8">
       <h1 className="text-4xl font-bold mb-6 mt-12 text-center">
         Schedule Page
       </h1>
@@ -102,7 +102,7 @@ const Schedule = () => {
         keywords="course schedule, course calendar, search courses, course dates, price range"
         author="Hasan Shamaa"
       />
-      <div className="bg-white shadow-lg p-4 rounded-lg mb-8">
+      <section className="bg-white shadow-lg p-4 rounded-lg mb-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label className="block mb-1 text-gray-700 font-semibold">
@@ -159,8 +159,8 @@ const Schedule = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div>
+      </section>
+      <section>
         {filteredCourses.map((course) => (
           <CardSchedule
             key={course.id}
@@ -168,7 +168,7 @@ const Schedule = () => {
             onAddToCart={handleAddToCart}
           />
         ))}
-      </div>
+      </section>
       {isVisible && (
         <button
           onClick={scrollToTop}
@@ -188,7 +188,7 @@ const Schedule = () => {
           ↑
         </button>
       )}
-    </section>
+    </main>
   );
 };
 

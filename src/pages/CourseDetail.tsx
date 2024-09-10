@@ -15,14 +15,14 @@ export const CourseDetails = () => {
   }
 
   return (
-    <section className="flex flex-col gap-16 px-6 py-10 bg-gray-100 overflow-x-hidden">
+    <main className="flex flex-col gap-16 px-6 py-10 bg-gray-100 overflow-x-hidden">
       <SEO
         title={course.title}
         description={course.description}
         keywords={`${course.title}, ${course.category}, ${course.price}`}
         author="Hasan Shamaa"
       />
-      <div className="container mx-auto flex flex-col md:flex-row justify-center items-start w-full max-w-screen-lg">
+      <section className="container mx-auto flex flex-col md:flex-row justify-center items-start w-full max-w-screen-lg">
         <div className="w-full md:w-[400px] lg:w-[600px] flex justify-center">
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
             <img
@@ -75,7 +75,7 @@ export const CourseDetails = () => {
             </Link>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };

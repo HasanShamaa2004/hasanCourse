@@ -89,7 +89,7 @@ const CoursesPage = () => {
   }, []);
 
   return (
-    <section className="container px-6 mx-auto py-8">
+    <main className="container px-6 mx-auto py-8">
       <SEO
         title="Courses - Explore Our Wide Range of Courses"
         description="Browse and search through our diverse range of courses. Filter by category, location, and more to find the perfect course for you."
@@ -99,7 +99,7 @@ const CoursesPage = () => {
       <h1 className="text-4xl font-bold mb-6 mt-12 text-center">
         Courses Page
       </h1>
-      <div className="bg-white shadow-lg p-4 rounded-lg flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0 md:space-x-4">
+      <section className="bg-white shadow-lg p-4 rounded-lg flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0 md:space-x-4">
         <div className="flex-1">
           <label className="block mb-1 text-gray-700 font-semibold">
             Search Courses
@@ -143,7 +143,7 @@ const CoursesPage = () => {
             <option value="InPerson">In-Person</option>
           </select>
         </div>
-      </div>
+      </section>
 
       <CardCourses
         courses={filteredCourses}
@@ -170,7 +170,7 @@ const CoursesPage = () => {
           ↑
         </button>
       )}
-    </section>
+    </main>
   );
 };
 
