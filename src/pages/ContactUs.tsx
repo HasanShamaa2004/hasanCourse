@@ -46,7 +46,7 @@ const ContactUs = () => {
         author="Hasan Shamaa"
       />
       <h1 className="text-4xl font-bold mb-6 mt-12 text-center">Contact Us</h1>
-      <section className="flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
+      <div className="flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0 md:space-x-8">
         <form
           onSubmit={handleSubmit}
           className="bg-white p-6 rounded-lg shadow-lg w-full md:w-2/3"
@@ -116,7 +116,7 @@ const ContactUs = () => {
             <p className="text-gray-700">123 Your Street, City, Country</p>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Optional Map */}
       {/* <div className="mt-8">

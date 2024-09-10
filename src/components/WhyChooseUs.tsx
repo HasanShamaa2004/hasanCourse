@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const WhyChooseUs = () => {
   return (
-    <section className="bg-primary text-white py-12 px-6">
+    <div className="bg-primary text-white py-12 px-6">
       <h2 className="text-4xl text-center font-secondary mb-8">
         Why Choose Us
       </h2>
@@ -38,7 +38,7 @@ const WhyChooseUs = () => {
           <p>We offer quality education at competitive rates.</p>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
 };
 

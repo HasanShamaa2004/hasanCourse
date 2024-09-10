@@ -99,7 +99,7 @@ const CoursesPage = () => {
       <h1 className="text-4xl font-bold mb-6 mt-12 text-center">
         Courses Page
       </h1>
-      <section className="bg-white shadow-lg p-4 rounded-lg flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0 md:space-x-4">
+      <div className="bg-white shadow-lg p-4 rounded-lg flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0 md:space-x-4">
         <div className="flex-1">
           <label className="block mb-1 text-gray-700 font-semibold">
             Search Courses
@@ -143,7 +143,7 @@ const CoursesPage = () => {
             <option value="InPerson">In-Person</option>
           </select>
         </div>
-      </section>
+      </div>
 
       <CardCourses
         courses={filteredCourses}

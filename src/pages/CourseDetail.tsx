@@ -22,7 +22,7 @@ export const CourseDetails = () => {
         keywords={`${course.title}, ${course.category}, ${course.price}`}
         author="Hasan Shamaa"
       />
-      <section className="container mx-auto flex flex-col md:flex-row justify-center items-start w-full max-w-screen-lg">
+      <div className="container mx-auto flex flex-col md:flex-row justify-center items-start w-full max-w-screen-lg">
         <div className="w-full md:w-[400px] lg:w-[600px] flex justify-center">
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
             <img
@@ -75,7 +75,7 @@ export const CourseDetails = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   );
 };

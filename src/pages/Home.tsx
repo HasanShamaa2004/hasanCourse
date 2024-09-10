@@ -52,7 +52,7 @@ const Home = () => {
         author="Hasan Shamaa"
       />
 
-      <section className="relative h-[90vh] w-full overflow-hidden">
+      <div className="relative h-[90vh] w-full overflow-hidden">
         <Swiper
           modules={[Pagination, Autoplay]}
           pagination={{ clickable: true }}
@@ -120,7 +120,7 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-      </section>
+      </div>
       <h2 className="text-4xl text-center py-4 font-secondary mb-4 mt-6">
         Featured Courses
       </h2>

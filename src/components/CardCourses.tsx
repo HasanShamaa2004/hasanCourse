@@ -27,7 +27,7 @@ const CardCourses = ({
   showDate = false,
 }: CardCoursesProps) => {
   return (
-    <section className="container mx-auto p-6">
+    <div className="container mx-auto p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {courses.map((course) => (
           <Link
@@ -86,7 +86,7 @@ const CardCourses = ({
           </Link>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

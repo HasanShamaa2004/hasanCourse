@@ -102,7 +102,7 @@ const Schedule = () => {
         keywords="course schedule, course calendar, search courses, course dates, price range"
         author="Hasan Shamaa"
       />
-      <section className="bg-white shadow-lg p-4 rounded-lg mb-8">
+      <div className="bg-white shadow-lg p-4 rounded-lg mb-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label className="block mb-1 text-gray-700 font-semibold">
@@ -159,7 +159,7 @@ const Schedule = () => {
             </div>
           </div>
         </div>
-      </section>
+      </div>
       <section>
         {filteredCourses.map((course) => (
           <CardSchedule

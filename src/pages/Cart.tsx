@@ -24,7 +24,7 @@ const Cart: FC = () => {
         author="Hasan Shamaa"
       />
       <h1 className="text-4xl font-bold mb-6 text-center">Cart Page</h1>
-      <section className="p-4 rounded-lg mb-8">
+      <div className="p-4 rounded-lg mb-8">
         {courses.length === 0 ? (
           <p className="text-center text-gray-700">Your cart is empty</p>
         ) : (
@@ -92,7 +92,7 @@ const Cart: FC = () => {
             </div>
           </div>
         )}
-      </section>
+      </div>
     </main>
   );
 };

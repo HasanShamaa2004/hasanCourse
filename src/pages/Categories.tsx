@@ -30,11 +30,11 @@ const CategoriesPage = () => {
         author="Hasan Shamaa"
       />
       <h1 className="text-4xl font-bold mb-6 text-center">Categories Page</h1>
-      <section className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-3  gap-6">
+      <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-3  gap-6">
         {categories.map((category) => (
           <CategoryCard key={category.id} category={category} />
         ))}
-      </section>
+      </div>
     </main>
   );
 };
