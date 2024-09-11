@@ -7,7 +7,6 @@ import {
 } from "react-icons/fa";
 import { Course } from "../types";
 import { Link } from "react-router-dom";
-import LazyLoad from "react-lazyload";
 
 type CardCoursesProps = {
   courses: Course[];
@@ -36,13 +35,11 @@ const CardCourses = ({
             key={course.id}
             className="bg-white text-primary rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
           >
-            <LazyLoad height={200} offset={100} once>
-              <img
-                src={course.image}
-                alt={course.title}
-                className="w-full h-48 object-cover"
-              />
-            </LazyLoad>
+            <img
+              src={course.image}
+              alt={course.title}
+              className="w-full h-48 object-cover"
+            />
             <div className="p-4">
               <h3 className="text-xl font-bold mb-2">{course.title}</h3>
               {showDescription && (

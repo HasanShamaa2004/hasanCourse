@@ -3,6 +3,7 @@ import { Course } from "../types";
 import { useCartStore } from "../store/cartStore";
 import SEO from "../components/SEO";
 import { toast } from "react-toastify";
+import LazyLoad from "react-lazyload";
 
 export const CourseDetails = () => {
   const { state: course } = useLocation();
@@ -25,11 +26,13 @@ export const CourseDetails = () => {
       <div className="container mx-auto flex flex-col md:flex-row justify-center items-start w-full max-w-screen-lg">
         <div className="w-full md:w-[400px] lg:w-[600px] flex justify-center">
           <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] overflow-hidden">
-            <img
-              src={course.image}
-              alt={course.title}
-              className="absolute inset-0 w-full h-full object-contain rounded-lg shadow-md"
-            />
+            <LazyLoad height={200} offset={100} once>
+              <img
+                src={course.image}
+                alt={course.title}
+                className="absolute inset-0 w-full h-full object-contain rounded-lg shadow-md"
+              />
+            </LazyLoad>
           </div>
         </div>
         <div className="flex flex-col gap-4 p-4 w-full md:w-[600px] lg:w-[800px]">

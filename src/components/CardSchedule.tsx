@@ -2,7 +2,6 @@ import React from "react";
 import { Course } from "../types";
 import { useCartStore } from "../store/cartStore";
 import { Link } from "react-router-dom"; // لاستخدامه للتنقل إلى صفحة التفاصيل
-import LazyLoad from "react-lazyload";
 import { toast } from "react-toastify";
 
 interface CardScheduleProps {
@@ -24,13 +23,11 @@ const CardSchedule: React.FC<CardScheduleProps> = ({ course, onAddToCart }) => {
   return (
     <div className="flex flex-col md:flex-row items-start bg-white shadow-lg rounded-lg overflow-hidden mb-6">
       <div className="w-full md:w-1/4 p-4">
-        <LazyLoad height={200} offset={100} once>
-          <img
-            src={course.image}
-            alt={course.title}
-            className="w-full h-32 object-cover rounded-md"
-          />
-        </LazyLoad>
+        <img
+          src={course.image}
+          alt={course.title}
+          className="w-full h-32 object-cover rounded-md"
+        />
       </div>
       <div className="w-full md:w-3/4 p-4 flex flex-col justify-between">
         <h3 className="text-xl font-semibold text-primary mb-2">

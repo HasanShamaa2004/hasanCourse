@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import WhyChooseUs from "../components/WhyChooseUs";
 import ClientTestimonials from "../components/ClientTestimonials";
+import LazyLoad from "react-lazyload";
 
 const Home = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -62,11 +63,13 @@ const Home = () => {
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className="relative h-full">
-              <img
-                src={image}
-                alt={`Slide ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
+              <LazyLoad height={200} offset={100} once>
+                <img
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </LazyLoad>
               <div
                 className="absolute inset-0 bg-black bg-opacity-60
                 flex flex-col items-center justify-center text-center px-4"
