@@ -14,7 +14,12 @@ const Cart: FC = () => {
     clearCart,
     getTotalPrice,
   } = useCartStore();
-
+  const handelSubmit = () => {
+    toast.success("Submit complete !!", {
+      position: "bottom-right",
+    });
+    clearCart();
+  };
   return (
     <main className="container mt-16 mx-auto py-8 px-6">
       <SEO
@@ -80,11 +85,7 @@ const Cart: FC = () => {
                 Clear Cart
               </button>
               <button
-                onClick={() => {
-                  toast.success("Submit complete !!", {
-                    position: "bottom-right",
-                  });
-                }}
+                onClick={handelSubmit}
                 className="bg-primary text-white px-4 py-2 rounded-md mt-4"
               >
                 Submit

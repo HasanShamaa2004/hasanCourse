@@ -62,9 +62,10 @@ const Home = () => {
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className="relative h-full">
-              <div
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${image})` }}
+              <img
+                src={image}
+                alt={`Slide ${index + 1}`}
+                className="w-full h-full object-cover"
               />
               <div
                 className="absolute inset-0 bg-black bg-opacity-60
