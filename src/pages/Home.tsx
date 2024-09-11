@@ -78,7 +78,7 @@ const Home = () => {
                     type: "spring",
                     stiffness: 150,
                     damping: 30,
-                    delay: 0.8,
+                    delay: 0.6,
                   }}
                   className="text-5xl md:text-6xl font-bold font-primary text-white leading-tight"
                 >
@@ -88,7 +88,7 @@ const Home = () => {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
-                    delay: 1,
+                    delay: 0.9,
                     type: "spring",
                     stiffness: 150,
                     damping: 30,
@@ -104,7 +104,7 @@ const Home = () => {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{
-                    delay: 1.3,
+                    delay: 1.1,
                     type: "spring",
                     stiffness: 150,
                     damping: 30,
