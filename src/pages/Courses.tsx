@@ -164,7 +164,7 @@ const Courses = () => {
         keywords="courses, course categories, online courses, in-person courses, search courses"
         author="Hasan Shamaa"
       />
-      <h1 className="text-4xl font-bold mb-6 mt-12 text-center">
+      <h1 className="text-4xl font-bold mb-6 mt-14 text-center">
         Courses Page
       </h1>
 

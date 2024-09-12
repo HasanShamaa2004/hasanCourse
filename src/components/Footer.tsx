@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-6">
       <div className="container mx-auto text-center px-8">
-        <div className="flex md:justify-start justify-center">
+        <div className="flex md:justify-start lg:ml-4 justify-center">
           <Link
             to="/"
             className="text-white text-3xl font-bold font-logo italic"

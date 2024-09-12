@@ -29,10 +29,12 @@ const CategoriesPage = () => {
         keywords="course categories, education, learning, categories, explore courses"
         author="Hasan Shamaa"
       />
-      <h1 className="text-4xl font-bold mb-6 text-center">Categories Page</h1>
+      <h1 className="text-4xl font-bold mb-6 mt-6 text-center">
+        Categories Page
+      </h1>
       <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-4  gap-6">
         {categories.map((category) => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading />} key={category.id}>
             <CategoryCard key={category.id} category={category} />
           </Suspense>
         ))}
