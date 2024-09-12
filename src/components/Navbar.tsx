@@ -32,7 +32,7 @@ const Navbar = () => {
       }`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="text-white text-3xl font-bold font-primary">
+        <Link to="/" className="text-white italic text-3xl font-bold font-logo">
           My Courses
         </Link>
 
@@ -52,34 +52,34 @@ const Navbar = () => {
           }`}
         >
           <li>
-            <Link to="/" className="hover:text-secondary">
+            <Link to="/" className="hover:text-secondary text-lg ">
               Home
             </Link>
           </li>
           <li>
-            <Link to="/courses" className="hover:text-secondary">
+            <Link to="/courses" className="hover:text-secondary text-lg">
               Courses
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:text-secondary">
+            <Link to="/contact" className="hover:text-secondary text-lg">
               Contact Us
             </Link>
           </li>
           <li>
-            <Link to="/categories" className="hover:text-secondary">
+            <Link to="/categories" className="hover:text-secondary text-lg">
               Categories
             </Link>
           </li>
           <li>
-            <Link to="/schedule" className="hover:text-secondary">
-              Schedule
+            <Link to="/schedule" className="hover:text-secondary text-lg">
+              Timing Courses
             </Link>
           </li>
           <li>
             <Link
               to="/cart"
-              className="relative flex items-center justify-center hover:text-secondary"
+              className="relative flex items-center justify-center hover:text-secondary text-lg"
             >
               <FiShoppingCart className="text-2xl" />
               <span className="absolute -top-2 -right-2 bg-secondary text-primary text-xs rounded-full w-5 h-5 flex items-center justify-center">

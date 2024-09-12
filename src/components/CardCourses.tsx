@@ -27,23 +27,25 @@ const CardCourses = ({
 }: CardCoursesProps) => {
   return (
     <div className="container mx-auto p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-screen-xl mx-auto">
         {courses.map((course) => (
           <Link
             to={`/courses/${course.id}`}
             state={course}
             key={course.id}
-            className="bg-white text-primary rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105"
+            className="bg-white text-primary rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 max-w-[400px] mx-auto flex flex-col h-full"
           >
             <img
               src={course.image}
               alt={course.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-48 object-cover aspect-video"
             />
-            <div className="p-4">
+            <div className="p-4 flex flex-col justify-between flex-grow">
               <h3 className="text-xl font-bold mb-2">{course.title}</h3>
               {showDescription && (
-                <p className="text-gray-600 mb-3">{course.description}</p>
+                <p className="text-gray-600 mb-3 flex-grow">
+                  {course.description}
+                </p>
               )}
               {showDate && (
                 <p className="text-gray-700 mb-2 flex items-center">
@@ -66,7 +68,7 @@ const CardCourses = ({
               {showLocation && (
                 <div className="text-gray-700 mb-2 flex items-center">
                   <strong className="mr-2">Location :</strong>
-                  {course.isOnline ? (
+                  {course.location === "Online" ? (
                     <>
                       <FaGlobe className="mr-1 text-blue-500" />
                       <p>Online</p>

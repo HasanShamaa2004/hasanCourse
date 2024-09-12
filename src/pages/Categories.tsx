@@ -1,11 +1,11 @@
-// src/pages/CategoriesPage.tsx
-
 import { useEffect, useState } from "react";
 import axios from "axios";
-import CategoryCard from "../components/CategoryCard";
+
 import { Category } from "../types";
 import SEO from "../components/SEO";
-
+import { Suspense, lazy } from "react";
+import Loading from "../components/Loading/Loading";
+const CategoryCard = lazy(() => import("../components/CategoryCard"));
 const CategoriesPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -30,9 +30,11 @@ const CategoriesPage = () => {
         author="Hasan Shamaa"
       />
       <h1 className="text-4xl font-bold mb-6 text-center">Categories Page</h1>
-      <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-3  gap-6">
+      <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-4  gap-6">
         {categories.map((category) => (
-          <CategoryCard key={category.id} category={category} />
+          <Suspense fallback={<Loading />}>
+            <CategoryCard key={category.id} category={category} />
+          </Suspense>
         ))}
       </div>
     </main>

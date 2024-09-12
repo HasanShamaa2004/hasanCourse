@@ -14,12 +14,12 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-[300px] w-full mx-auto">
       <LazyLoad height={200} offset={100} once>
         <img
           src={category.image}
           alt={category.title}
-          className="w-full h-48 object-cover"
+          className="w-full h-48 object-cover transition-transform transform hover:scale-105"
         />
       </LazyLoad>
       <div className="p-4">

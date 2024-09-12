@@ -6,8 +6,8 @@
       "category": "Technology",
       "description": "Learn the basics of programming with hands-on exercises and real-world projects. This course covers fundamental programming concepts, including variables, data types, control structures, and basic algorithms. Ideal for beginners who want to start a career in software development or enhance their problem-solving skills.",
       "date": "2024-09-15",
-      "isOnline": true,
       "image": "/images/programing.webp",
+      "location":"Online",
       "price": 300
     },
     {
@@ -16,7 +16,6 @@
       "category": "Business",
       "description": "Basics of digital marketing, including SEO, social media, content marketing, and online advertising. This course is designed to provide a comprehensive introduction to the digital marketing landscape, helping you understand key strategies and tools to promote products and services effectively.",
       "date": "2024-09-20",
-      "isOnline": false,
       "location": "New York",
       "image": "/images/marketing.webp",
       "price": 200
@@ -27,7 +26,6 @@
       "category": "Design",
       "description": "Intro to graphic design principles, covering key concepts such as typography, color theory, layout, and visual hierarchy. This course provides practical skills and techniques to create visually appealing designs for both print and digital media, using industry-standard tools and software.",
       "date": "2024-09-22",
-      "isOnline": false,
       "location": "San Francisco",
       "image": "/images/graphicdesign.webp",
       "price": 130
@@ -38,8 +36,8 @@
       "category": "UI/UX",
       "description": "An introduction to the key concepts in user interface and user experience design. Learn about user research, wireframing, prototyping, and usability testing. This course focuses on creating intuitive and user-friendly digital products by understanding user needs and applying design best practices.",
       "date": "2024-10-01",
-      "isOnline": true,
       "image": "/images/uiux.webp",
+      "location": "Online",
       "price": 250
     },
     {
@@ -48,8 +46,8 @@
       "category": "Technology",
       "description": "Dive deeper into data analysis with advanced techniques such as machine learning, predictive analytics, and data visualization. This course covers statistical methods, data mining, and tools for analyzing complex datasets, equipping you with skills to derive actionable insights and drive data-informed decisions.",
       "date": "2024-10-05",
-      "isOnline": true,
       "image": "/images/data1.webp",
+      "location": "Online",
       "price": 350
     },
     {
@@ -58,8 +56,8 @@
       "category": "Business",
       "description": "Develop essential leadership skills to effectively manage teams and drive organizational success. This course covers leadership theories, communication strategies, conflict resolution, and change management. Gain insights into motivating and leading others, making strategic decisions, and enhancing your leadership capabilities.",
       "date": "2024-10-10",
-      "isOnline": true,
       "image": "/images/business1.webp",
+      "location":"Online",
       "price": 280
     },
     {
@@ -68,7 +66,6 @@
       "category": "Design",
       "description": "Explore advanced techniques in digital painting, including brushwork, layering, and texture creation. This course is designed for artists who want to refine their skills in creating digital artwork, focusing on enhancing creativity and mastering various digital painting tools and methods.",
       "date": "2024-10-15",
-      "isOnline": false,
       "location": "Los Angeles",
       "image": "/images/marketing1.webp",
       "price": 220
@@ -79,9 +76,9 @@
       "category": "UI/UX",
       "description": "Learn the fundamentals of user interface and user experience design. This course covers essential topics such as design principles, wireframing, prototyping, and user research, providing a solid foundation for creating intuitive and effective digital products.",
       "date": "2024-11-01",
-      "isOnline": true,
       "image": "/images/uiux2.webp",
-      "price": 270
+      "price": 270,
+      "location": "Online"
     },
     {
       "id": 9,
@@ -89,8 +86,8 @@
       "category": "Art",
       "description": "Unlock your creativity with essential techniques in creative writing. This course covers storytelling, character development, and narrative structure. Learn how to craft compelling stories, develop unique voices, and refine your writing style through practical exercises and constructive feedback.",
       "date": "2024-11-10",
-      "isOnline": true,
       "image": "/images/art1.webp",
+      "location": "Online",
       "price": 190
     },
     {
@@ -99,8 +96,8 @@
       "category": "Health",
       "description": "Gain a foundational understanding of nutrition science, including the roles of macronutrients and micronutrients, dietary guidelines, and healthy eating practices. This course explores how nutrition impacts overall health and wellness, providing practical advice for improving your diet and lifestyle.",
       "date": "2024-11-15",
-      "isOnline": true,
       "image": "/images/health1.webp",
+      "location":"Online",
       "price": 220
     },
     {
@@ -109,8 +106,8 @@
       "category": "Health",
       "description": "Learn about mental health issues, including common disorders, symptoms, and treatment options. This course provides valuable insights into mental wellness, stress management, and support strategies for individuals and communities, aiming to reduce stigma and promote mental health awareness.",
       "date": "2024-11-20",
-      "isOnline": true,
       "image": "/images/health2.webp",
+      "location": "Online",
       "price": 250
     },
     {
@@ -119,8 +116,8 @@
       "category": "Health",
       "description": "Explore the principles of fitness and exercise science, including exercise physiology, program design, and fitness assessment. This course is designed to help you understand the science behind physical activity and how to create effective exercise routines to improve health and performance.",
       "date": "2024-12-01",
-      "isOnline": true,
       "image": "/images/health3.webp",
+      "location": "Online",
       "price": 280
     },
     {
@@ -129,7 +126,6 @@
       "category": "Health",
       "description": "Discover holistic approaches to health and wellness, including mindfulness, nutrition, and alternative therapies. This course emphasizes the integration of physical, mental, and emotional well-being, offering practical strategies for achieving a balanced and healthy lifestyle.",
       "date": "2024-12-10",
-      "isOnline": false,
       "location": "Chicago",
       "image": "/images/health4.webp",
       "price": 300

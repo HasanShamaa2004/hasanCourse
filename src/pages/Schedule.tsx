@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import CardSchedule from "../components/CardSchedule";
 import { Course } from "../types";
 import SEO from "../components/SEO";
+import { Suspense, lazy } from "react";
+import Loading from "../components/Loading/Loading";
+const CardSchedule = lazy(() => import("../components/CardSchedule"));
 
 const Schedule = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -94,7 +96,7 @@ const Schedule = () => {
   return (
     <main className="container px-6 mx-auto py-8">
       <h1 className="text-4xl font-bold mb-6 mt-12 text-center">
-        Schedule Page
+        Timing Courses
       </h1>
       <SEO
         title="Course Schedule - Your Course Website"
@@ -102,7 +104,7 @@ const Schedule = () => {
         keywords="course schedule, course calendar, search courses, course dates, price range"
         author="Hasan Shamaa"
       />
-      <div className="bg-white shadow-lg p-4 rounded-lg mb-8">
+      <div className="p-4 rounded-lg mb-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
             <label className="block mb-1 text-gray-700 font-semibold">
@@ -162,11 +164,13 @@ const Schedule = () => {
       </div>
       <section>
         {filteredCourses.map((course) => (
-          <CardSchedule
-            key={course.id}
-            course={course}
-            onAddToCart={handleAddToCart}
-          />
+          <Suspense fallback={<Loading />}>
+            <CardSchedule
+              key={course.id}
+              course={course}
+              onAddToCart={handleAddToCart}
+            />
+          </Suspense>
         ))}
       </section>
       {isVisible && (

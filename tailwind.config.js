@@ -15,6 +15,7 @@ export default {
       fontFamily: {
         primary: ["Poppins", "sans-serif"],
         secondary: ["Roboto", "sans-serif"],
+        logo: ['"Playfair Display"', "serif"],
       },
     },
   },

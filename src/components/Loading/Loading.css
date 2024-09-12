@@ -1,0 +1,30 @@
+/* components/Loading.css */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* يمكن تعديلها وفقًا لمتطلباتك */
+  gap: 10px;
+}
+
+.loading-bar {
+  width: 20px;
+  height: 80px;
+  background-color: #fbb040; /* اللون المستخدم للشريط */
+  animation: loadingAnimation 1.5s infinite ease-in-out;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scaleY(0.3);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
