@@ -8,10 +8,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CourseDetails } from "./pages/CourseDetail";
 import Cart from "./pages/Cart";
+import ScrollToTopOnPageChange from "../ScrollToTopOnPageChange";
 
 const App = () => {
   return (
     <>
+      <ScrollToTopOnPageChange />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
