@@ -50,11 +50,13 @@ export const useCartStore = create<CartState>(
         })),
       decrementQuantity: (courseId) =>
         set((state) => ({
-          courses: state.courses.map((c) =>
-            c.course.id === courseId
-              ? { ...c, quantity: Math.max(c.quantity - 1, 1) }
-              : c
-          ),
+          courses: state.courses
+            .map((c) =>
+              c.course.id === courseId && { ...c, quantity: c.quantity > 0 }
+                ? { ...c, quantity: c.quantity - 1 }
+                : c
+            )
+            .filter((c) => c.quantity > 0),
         })),
       removeCourse: (courseId) =>
         set((state) => ({

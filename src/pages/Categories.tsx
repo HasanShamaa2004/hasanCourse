@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import { Category } from "../types";
 import SEO from "../components/SEO";
 import { Suspense, lazy } from "react";
@@ -8,7 +7,6 @@ import Loading from "../components/Loading/Loading";
 const CategoryCard = lazy(() => import("../components/CategoryCard"));
 const CategoriesPage = () => {
   const [categories, setCategories] = useState<Category[]>([]);
-
   useEffect(() => {
     const fetchCategories = async () => {
       try {
@@ -20,7 +18,6 @@ const CategoriesPage = () => {
     };
     fetchCategories();
   }, []);
-
   return (
     <main className="container mx-auto py-8 mt-8 px-6">
       <SEO

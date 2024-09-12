@@ -6,18 +6,14 @@ import SEO from "../components/SEO";
 import { Suspense, lazy } from "react";
 import Loading from "../components/Loading/Loading";
 const CardCourses = lazy(() => import("../components/CardCourses"));
-
 const Courses = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-
-  // Get search parameters from URL
   const searchQueryParam = params.get("title") || "";
   const categoryParam = params.get("category") || "All";
   const locationParam = params.get("location") || "All";
   const priceParam = params.get("price") || "";
   const dateParam = params.get("date") || "";
-
   const [courses, setCourses] = useState<Course[]>([]);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
   const [category, setCategory] = useState(categoryParam);
@@ -28,8 +24,6 @@ const Courses = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [locations, setLocations] = useState<string[]>([]);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  // Fetch courses and categories/locations on page load
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -37,11 +31,8 @@ const Courses = () => {
           "/data/courses.json"
         );
         const coursesData = response.data.courses;
-
         setCourses(coursesData);
-        setFilteredCourses(coursesData); // Display all courses initially
-
-        // Extract unique categories
+        setFilteredCourses(coursesData);
         const categories = Array.from(
           new Set(
             coursesData
@@ -49,8 +40,6 @@ const Courses = () => {
               .filter((cat): cat is string => cat !== undefined)
           )
         );
-
-        // Extract unique locations
         const locations = Array.from(
           new Set(
             coursesData
@@ -58,48 +47,34 @@ const Courses = () => {
               .filter((loc): loc is string => loc !== undefined)
           )
         );
-
         setCategories(categories);
         setLocations(locations);
       } catch (error) {
         console.error("Error fetching the courses:", error);
       }
     };
-
     fetchCourses();
   }, []);
-
-  // Filter courses based on the search parameters
   const filterCourses = () => {
     let filtered = courses;
-
-    // Filter by category
     if (category !== "All") {
       filtered = filtered.filter((course) => course.category === category);
     }
-
-    // Filter by location
     if (locationFilter !== "All") {
       filtered = filtered.filter(
         (course) => course.location === locationFilter
       );
     }
-
-    // Filter by title (search query)
     if (searchQuery) {
       filtered = filtered.filter((course) =>
         course.title.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-
-    // Filter by price
     if (price) {
       filtered = filtered.filter(
         (course) => course.price !== undefined && course.price <= Number(price)
       );
     }
-
-    // Filter by date
     if (date) {
       filtered = filtered.filter((course) => course.date === date);
     }
@@ -107,12 +82,9 @@ const Courses = () => {
     setFilteredCourses(filtered);
   };
 
-  // Trigger filter when the search button is clicked
   const handleSearchClick = () => {
     filterCourses();
   };
-
-  // Handlers for form changes
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
   };
@@ -132,8 +104,6 @@ const Courses = () => {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
   };
-
-  // Scroll to top button visibility
   const toggleVisibility = () => {
     if (window.pageYOffset > window.innerHeight / 2) {
       setIsVisible(true);
@@ -141,21 +111,18 @@ const Courses = () => {
       setIsVisible(false);
     }
   };
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
-
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
     return () => {
       window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
-
   return (
     <main className="container px-6 mx-auto py-8">
       <SEO
@@ -167,7 +134,6 @@ const Courses = () => {
       <h1 className="text-4xl font-bold mb-6 mt-14 text-center">
         Courses Page
       </h1>
-
       <div className="p-4 rounded-lg mb-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="flex-1">
@@ -250,7 +216,6 @@ const Courses = () => {
           </div>
         </div>
       </div>
-
       {filteredCourses.length === 0 ? (
         <h1 className="text-4xl text-center text-primary">No Results Found</h1>
       ) : (
@@ -264,7 +229,6 @@ const Courses = () => {
           />
         </Suspense>
       )}
-
       {isVisible && (
         <button
           onClick={scrollToTop}
@@ -286,5 +250,4 @@ const Courses = () => {
     </main>
   );
 };
-
 export default Courses;

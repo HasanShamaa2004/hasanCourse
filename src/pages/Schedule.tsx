@@ -5,7 +5,6 @@ import SEO from "../components/SEO";
 import { Suspense, lazy } from "react";
 import Loading from "../components/Loading/Loading";
 const CardSchedule = lazy(() => import("../components/CardSchedule"));
-
 const Schedule = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
@@ -14,22 +13,18 @@ const Schedule = () => {
   const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  // Fetch courses when the page loads
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get("/data/courses.json");
         setCourses(response.data.courses);
-        setFilteredCourses(response.data.courses); // Display all courses initially
+        setFilteredCourses(response.data.courses);
       } catch (error) {
         console.error("Error fetching courses:", error);
       }
     };
     fetchCourses();
   }, []);
-
-  // Function to handle the filtering logic
   const handleFilter = () => {
     let filtered = courses;
 

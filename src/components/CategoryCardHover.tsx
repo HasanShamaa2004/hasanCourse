@@ -47,13 +47,15 @@ const CategoryCardHover = ({ category }: CategoryCardProps) => {
       {isHovered && (
         <motion.div
           className="absolute inset-0 bg-black bg-opacity-70 text-white p-4 flex flex-col justify-center items-center"
-          initial={{ opacity: 0, y: 20 }} // القيمة الأولية
-          animate={{ opacity: 1, y: 0 }} // الحركة عند التفاعل
-          exit={{ opacity: 0, y: 20 }} // الحركة عند الإخفاء
-          transition={{ duration: 0.3 }} // مدة الانيميشن
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.3 }}
         >
           <h3 className="text-xl font-bold mb-2">{category.title}</h3>
-          <p className="text-gray-200 line-clamp-3">{category.description}</p>
+          <p className="text-gray-200 text-base line-clamp-3">
+            {category.description}
+          </p>
           <Link
             to={`/categories`}
             className="text-secondary mt-2 hover:underline"

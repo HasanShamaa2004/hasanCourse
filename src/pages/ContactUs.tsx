@@ -1,19 +1,14 @@
-// src/pages/ContactUsPage.tsx
-
 import React, { useState } from "react";
 import { FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import SEO from "../components/SEO";
-// import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -23,20 +18,17 @@ const ContactUs = () => {
       [name]: value,
     }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
-      // toast.success('Message sent successfully!', {
-      //   position: 'bottom-right',
-      // });
+      toast.success("Message sent successfully!", {
+        position: "bottom-right",
+      });
       setFormData({ name: "", email: "", message: "" });
     }, 2000);
   };
-
   return (
     <main className="container mx-auto py-8 px-6">
       <SEO
@@ -99,8 +91,6 @@ const ContactUs = () => {
             {isSubmitting ? "Sending..." : "Send Message"}
           </button>
         </form>
-
-        {/* Contact Information */}
         <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/3">
           <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
           <div className="flex items-center mb-4">
@@ -117,20 +107,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-
-      {/* Optional Map */}
-      {/* <div className="mt-8">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_URL"
-          width="100%"
-          height="400"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-        ></iframe>
-      </div> */}
     </main>
   );
 };
-
 export default ContactUs;

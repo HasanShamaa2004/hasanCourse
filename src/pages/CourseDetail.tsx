@@ -4,7 +4,6 @@ import { useCartStore } from "../store/cartStore";
 import SEO from "../components/SEO";
 import { toast } from "react-toastify";
 import LazyLoad from "react-lazyload";
-
 export const CourseDetails = () => {
   const { state: course } = useLocation();
   const addCourse = useCartStore((state) => state.addCourse);
@@ -14,7 +13,6 @@ export const CourseDetails = () => {
       position: "bottom-right",
     });
   }
-
   return (
     <main className="flex flex-col gap-16 px-6 py-10 bg-gray-100 overflow-x-hidden">
       <SEO
