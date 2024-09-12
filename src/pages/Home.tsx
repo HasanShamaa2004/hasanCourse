@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Autoplay } from "swiper/modules";
 import { Suspense, lazy } from "react";
 import { Navigation, Pagination } from "swiper/modules";
 import Loading from "../components/Loading/Loading";
-const CategoryCard = lazy(() => import("../components/CategoryCard"));
+import HowMyCourses from "../components/HowMyCourses";
+const CategoryCardHover = lazy(() => import("../components/CategoryCardHover"));
 const CardCourses = lazy(() => import("../components/CardCourses"));
 
 const Home = () => {
@@ -89,7 +91,6 @@ const Home = () => {
         className="relative w-full h-screen md:h-[60vh] lg:h-[70vh] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('/images/slider1.webp')` }}
       >
-        {" "}
         <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center p-4 md:p-8 lg:p-12">
           <div className="bg-white p-4 mt-12 rounded-lg shadow-lg">
             <h1 className="text-4xl font-semibold text-gray-700">
@@ -101,12 +102,12 @@ const Home = () => {
                 placeholder="Search by title..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="p-2 border text-primary border-gray-300 rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
               />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="p-2 border text-primary border-gray-300 rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
               >
                 <option value="">All Categories</option>
                 {categories.map((category) => (
@@ -118,7 +119,7 @@ const Home = () => {
               <select
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
-                className="p-2 border text-primary border-gray-300 rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
               >
                 <option value="">All Locations</option>
                 {locations.map((location) => (
@@ -131,14 +132,15 @@ const Home = () => {
                 type="number"
                 placeholder="Max Price"
                 value={selectedPrice || ""}
+                onWheel={(event) => event.currentTarget.blur()}
                 onChange={(e) => setSelectedPrice(Number(e.target.value))}
-                className="p-2 border text-primary border-gray-300 rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent md:flex-grow"
               />
               <input
                 type="date"
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                className="p-2 border text-primary border-gray-300 rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
               />
               <button
                 onClick={handleSearch}
@@ -150,8 +152,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Featured Courses */}
       <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-6">
         Featured Courses
       </h2>
@@ -164,7 +164,7 @@ const Home = () => {
         />
       </Suspense>
 
-      <div className="bg-gray-900 py-12 gap-4 px-6">
+      <div className="bg-gray-900 py-14 px-14">
         <Swiper
           spaceBetween={30}
           slidesPerView={1}
@@ -187,110 +187,23 @@ const Home = () => {
             nextEl: ".swiper-button-next",
           }}
           pagination={{ clickable: true }}
-          modules={[Navigation, Pagination]}
-          autoplay={true}
+          modules={[Navigation, Pagination, Autoplay]}
+          autoplay={{
+            disableOnInteraction: true,
+          }}
         >
           {categorie.map((category) => (
             <SwiperSlide key={category.id}>
               <Suspense fallback={<Loading />}>
-                <CategoryCard category={category} />
+                <CategoryCardHover category={category} />
               </Suspense>
             </SwiperSlide>
           ))}
-          {/* Custom Navigation Buttons */}
           <div className="swiper-button-prev"></div>
           <div className="swiper-button-next"></div>
         </Swiper>
       </div>
-
-      {/* Best Selling Courses */}
-      {/* <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-6">
-        Best Selling
-      </h2>
-      <CardCourses
-        courses={courses.slice(3, 7)}
-        showCategory
-        showDate
-        showLocation
-      /> */}
-      {/* How My Courses Works Section */}
-      <div className="bg-gray-100 py-16">
-        <h2 className="text-5xl text-center text-primary font-secondary mb-10">
-          How My Courses Works?
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto px-4">
-          {/* Step 1 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="bg-secondary p-4 rounded-full">
-              <img
-                src="/icons/search.svg"
-                alt="Search Icon"
-                className="w-12 h-12"
-              />
-            </div>
-            <h3 className="text-xl font-semibold text-primary mt-4">
-              1. Browse Courses
-            </h3>
-            <p className="text-gray-600 mt-2">
-              Search and explore a wide variety of courses that match your
-              interests and goals.
-            </p>
-          </div>
-
-          {/* Step 2 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="bg-secondary p-4 rounded-full">
-              <img
-                src="/icons/select-course.svg"
-                alt="Select Course Icon"
-                className="w-12 h-12"
-              />
-            </div>
-            <h3 className="text-xl font-semibold text-primary mt-4">
-              2. Select & Enroll
-            </h3>
-            <p className="text-gray-600 mt-2">
-              Choose the course that fits your schedule and budget, and enroll
-              easily online.
-            </p>
-          </div>
-
-          {/* Step 3 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="bg-secondary p-4 rounded-full">
-              <img
-                src="/icons/learn-online.svg"
-                alt="Learn Online Icon"
-                className="w-12 h-12"
-              />
-            </div>
-            <h3 className="text-xl font-semibold text-primary mt-4">
-              3. Learn & Grow
-            </h3>
-            <p className="text-gray-600 mt-2">
-              Start learning at your own pace with expert instructors and gain
-              new skills.
-            </p>
-          </div>
-
-          {/* Step 4 */}
-          <div className="flex flex-col items-center text-center">
-            <div className="bg-secondary p-4 rounded-full">
-              <img
-                src="/icons/certificate.svg"
-                alt="Certificate Icon"
-                className="w-12 h-12"
-              />
-            </div>
-            <h3 className="text-xl font-semibold text-primary mt-4">
-              4. Get Certified
-            </h3>
-            <p className="text-gray-600 mt-2">
-              Upon completion, earn a certificate to showcase your achievements.
-            </p>
-          </div>
-        </div>
-      </div>
+      <HowMyCourses />
     </main>
   );
 };

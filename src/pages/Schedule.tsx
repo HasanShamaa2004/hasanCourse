@@ -15,11 +15,13 @@ const Schedule = () => {
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  // Fetch courses when the page loads
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const response = await axios.get("/data/courses.json");
         setCourses(response.data.courses);
+        setFilteredCourses(response.data.courses); // Display all courses initially
       } catch (error) {
         console.error("Error fetching courses:", error);
       }
@@ -27,13 +29,12 @@ const Schedule = () => {
     fetchCourses();
   }, []);
 
-  useEffect(() => {
+  // Function to handle the filtering logic
+  const handleFilter = () => {
     let filtered = courses;
 
-    // Parse search query as a number
     const searchNumber = parseFloat(searchQuery);
 
-    // Filter by search query (title or price)
     if (searchQuery) {
       filtered = filtered.filter((course) => {
         const titleMatch = course.title
@@ -47,29 +48,29 @@ const Schedule = () => {
       });
     }
 
-    // Filter by date
     if (dateFilter) {
       filtered = filtered.filter((course) => course.date === dateFilter);
     }
 
-    // Filter by price range
     if (minPrice !== undefined) {
       filtered = filtered.filter(
         (course) => course.price !== undefined && course.price >= minPrice
       );
     }
+
     if (maxPrice !== undefined) {
       filtered = filtered.filter(
         (course) => course.price !== undefined && course.price <= maxPrice
       );
     }
 
-    setFilteredCourses(filtered);
-  }, [searchQuery, dateFilter, minPrice, maxPrice, courses]);
+    setFilteredCourses(filtered); // Update the filtered courses after applying the filters
+  };
 
   const handleAddToCart = (course: Course) => {
     console.log("Added to cart:", course);
   };
+
   const toggleVisibility = () => {
     if (window.pageYOffset > window.innerHeight / 2) {
       setIsVisible(true);
@@ -78,7 +79,6 @@ const Schedule = () => {
     }
   };
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -160,11 +160,19 @@ const Schedule = () => {
               />
             </div>
           </div>
+          <div className="flex-none mt-4 md:mt-0">
+            <button
+              onClick={handleFilter}
+              className="bg-secondary mt-6 text-white py-2 px-6 rounded-md hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
       <section>
         {filteredCourses.map((course) => (
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading />} key={course.id}>
             <CardSchedule
               key={course.id}
               course={course}
@@ -182,12 +190,11 @@ const Schedule = () => {
             right: "30px",
             padding: "10px",
             backgroundColor: "#FBB040",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
+            borderRadius: "50%",
+            boxShadow: "0px 2px 10px rgba(0,0,0,0.2)",
             cursor: "pointer",
-            fontSize: "20px",
           }}
+          aria-label="Scroll to top"
         >
           ↑
         </button>

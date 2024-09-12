@@ -4,42 +4,38 @@
 /* Ensure swiper styles are correctly imported and applied */
 .swiper-button-prev,
 .swiper-button-next {
-  width: 30px !important;
-  height: 30px !important;
-  background-color: #fbb040; /* Example color */
+  width: 40px !important;
+  height: 40px !important;
+  background-color: #fbb040;
   border-radius: 50%;
-  color: #fff; /* Text color */
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px !important; /* Font size */
-  z-index: 10;
+  font-size: 20px !important;
+  z-index: 1 !important; /* Lower z-index */
   position: absolute;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .swiper-button-prev {
-  left: 10px !important;
+  left: 1px !important;
 }
 
 .swiper-button-next {
-  right: 10px !important;
+  right: 1px !important;
 }
 
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
-  background-color: #fbb040 !important; /* Hover background color */
-  color: #000; /* Hover text color */
+  background-color: #fbb040 !important;
+  color: #000;
 }
+
 .swiper-button-next:after,
-.swiper-rtl .swiper-button-prev:after {
-  font-size: 20px !important;
-}
-.swiper-button-next:before,
-.swiper-rtl .swiper-button-prev:before {
-  font-size: 20px !important;
-}
+.swiper-rtl .swiper-button-prev:after,
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
   font-size: 20px !important;

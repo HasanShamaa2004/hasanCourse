@@ -143,7 +143,7 @@ const Navbar = () => {
                 className="hover:text-secondary border-b border-transparent hover:border-secondary pb-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Schedule
+                Timing Courses
               </Link>
             </li>
             <li>

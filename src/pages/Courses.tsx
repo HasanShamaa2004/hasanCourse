@@ -7,7 +7,7 @@ import { Suspense, lazy } from "react";
 import Loading from "../components/Loading/Loading";
 const CardCourses = lazy(() => import("../components/CardCourses"));
 
-const CoursesPage = () => {
+const Courses = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
 
@@ -29,31 +29,33 @@ const CoursesPage = () => {
   const [locations, setLocations] = useState<string[]>([]);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  // Fetch courses and categories/locations on page load
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("/data/courses.json");
-        setCourses(response.data.courses);
+        const response = await axios.get<{ courses: Course[] }>(
+          "/data/courses.json"
+        );
+        const coursesData = response.data.courses;
 
-        // Set unique categories
-        const categories: string[] = Array.from(
+        setCourses(coursesData);
+        setFilteredCourses(coursesData); // Display all courses initially
+
+        // Extract unique categories
+        const categories = Array.from(
           new Set(
-            response.data.courses
-              .map((c: Course) => c.category)
-              .filter(
-                (category: string): category is string => category !== undefined
-              )
+            coursesData
+              .map((course) => course.category)
+              .filter((cat): cat is string => cat !== undefined)
           )
         );
 
-        // Set unique locations
-        const locations: string[] = Array.from(
+        // Extract unique locations
+        const locations = Array.from(
           new Set(
-            response.data.courses
-              .map((c: Course) => c.location)
-              .filter(
-                (location: string): location is string => location !== undefined
-              )
+            coursesData
+              .map((course) => course.location)
+              .filter((loc): loc is string => loc !== undefined)
           )
         );
 
@@ -63,10 +65,11 @@ const CoursesPage = () => {
         console.error("Error fetching the courses:", error);
       }
     };
+
     fetchCourses();
   }, []);
 
-  // Function to apply filters based on the search parameters
+  // Filter courses based on the search parameters
   const filterCourses = () => {
     let filtered = courses;
 
@@ -78,11 +81,11 @@ const CoursesPage = () => {
     // Filter by location
     if (locationFilter !== "All") {
       filtered = filtered.filter(
-        (course) => (course.location || "") === locationFilter
+        (course) => course.location === locationFilter
       );
     }
 
-    // Filter by title
+    // Filter by title (search query)
     if (searchQuery) {
       filtered = filtered.filter((course) =>
         course.title.toLowerCase().includes(searchQuery.toLowerCase())
@@ -104,13 +107,12 @@ const CoursesPage = () => {
     setFilteredCourses(filtered);
   };
 
-  // Update the filters and apply search automatically when page loads or URL parameters change
-  useEffect(() => {
-    filterCourses(); // Automatically apply filters on initial load or when parameters change
-  }, [category, locationFilter, searchQuery, price, date, courses]);
-  // const handleSearchClick = () => {
-  //   filterCourses();
-  // };
+  // Trigger filter when the search button is clicked
+  const handleSearchClick = () => {
+    filterCourses();
+  };
+
+  // Handlers for form changes
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
   };
@@ -131,6 +133,7 @@ const CoursesPage = () => {
     setDate(e.target.value);
   };
 
+  // Scroll to top button visibility
   const toggleVisibility = () => {
     if (window.pageYOffset > window.innerHeight / 2) {
       setIsVisible(true);
@@ -165,80 +168,87 @@ const CoursesPage = () => {
         Courses Page
       </h1>
 
-      <div className="bg-white p-4 rounded-lg flex flex-col md:flex-row justify-between mb-8 space-y-4 md:space-y-0 md:space-x-2">
-        <div className="flex-1">
-          <label className="block mb-1 text-gray-700 font-semibold">
-            Search Courses
-          </label>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            placeholder="Search by title..."
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-          />
+      <div className="p-4 rounded-lg mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 md:space-x-4">
+          <div className="flex-1">
+            <label className="block mb-1 text-gray-700 font-semibold">
+              Search Courses
+            </label>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search by title..."
+              className="w-full p-2 border border-gray-300 md:mb-5 lg:mb-0 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block mb-1 text-gray-700 font-semibold">
+              Category
+            </label>
+            <select
+              value={category}
+              onChange={handleCategoryChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+            >
+              <option value="All">All Categories</option>
+              {categories.map((cat, index) => (
+                <option key={index} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex-1">
+            <label className="block mb-1 text-gray-700 font-semibold">
+              Location
+            </label>
+            <select
+              value={locationFilter}
+              onChange={handleLocationChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+            >
+              <option value="All">All Locations</option>
+              {locations.map((loc, index) => (
+                <option key={index} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex-1 flex flex-col">
+            <label className="block mb-1 text-gray-700 font-semibold">
+              Price
+            </label>
+            <input
+              type="number"
+              value={price}
+              onChange={handlePriceChange}
+              onWheel={(event) => event.currentTarget.blur()}
+              placeholder="Max Price"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+            />
+          </div>
+          <div className="flex-1">
+            <label className="block mb-1 text-gray-700 font-semibold">
+              Date
+            </label>
+            <input
+              type="date"
+              value={date}
+              onChange={handleDateChange}
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+            />
+          </div>
+          <div className="mt-4 md:mt-0">
+            <button
+              onClick={handleSearchClick}
+              className="bg-secondary mt-6 text-white py-2 px-6 rounded-md hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
+            >
+              Search
+            </button>
+          </div>
         </div>
-        <div className="flex-1">
-          <label className="block mb-1 text-gray-700 font-semibold">
-            Category
-          </label>
-          <select
-            value={category}
-            onChange={handleCategoryChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-          >
-            <option value="All">All Categories</option>
-            {categories.map((cat, index) => (
-              <option key={index} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex-1">
-          <label className="block mb-1 text-gray-700 font-semibold">
-            Location
-          </label>
-          <select
-            value={locationFilter}
-            onChange={handleLocationChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-          >
-            <option value="All">All Locations</option>
-            {locations.map((loc, index) => (
-              <option key={index} value={loc}>
-                {loc}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="flex-1">
-          <label className="block mb-1 text-gray-700 font-semibold">
-            Price
-          </label>
-          <input
-            type="number"
-            value={price}
-            onChange={handlePriceChange}
-            placeholder="Max Price"
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-          />
-        </div>
-        <div className="flex-1">
-          <label className="block mb-1 text-gray-700 font-semibold">Date</label>
-          <input
-            type="date"
-            value={date}
-            onChange={handleDateChange}
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
-          />
-        </div>
-        {/* <button
-          onClick={handleSearchClick}
-          className="w-full md:w-auto px-4 py-1 bg-secondary text-white rounded-md mt-4 md:mt-0 hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50"
-        >
-          Search
-        </button> */}
       </div>
 
       {filteredCourses.length === 0 ? (
@@ -264,12 +274,11 @@ const CoursesPage = () => {
             right: "30px",
             padding: "10px",
             backgroundColor: "#FBB040",
-            color: "white",
-            border: "none",
-            borderRadius: "5px",
+            borderRadius: "50%",
+            boxShadow: "0px 2px 10px rgba(0,0,0,0.2)",
             cursor: "pointer",
-            fontSize: "20px",
           }}
+          aria-label="Scroll to top"
         >
           ↑
         </button>
@@ -278,4 +287,4 @@ const CoursesPage = () => {
   );
 };
 
-export default CoursesPage;
+export default Courses;
