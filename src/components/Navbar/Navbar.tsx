@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiShoppingCart } from "react-icons/fi";
 import { Menu, X } from "lucide-react";
-import { useCartStore } from "../store/cartStore";
-
+import "./Navbar.css";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const totalCourses = useCartStore((state) => state.getTotalCourses());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +22,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 px-6 py-6 w-full z-30 transition-all duration-300 ${
+      className={`fixed top-0 left-0 px-6 py-3 w-full z-30 transition-all duration-300 ${
         isScrolled || location.pathname !== "/"
           ? "bg-gray-900 shadow-lg py-2"
           : "bg-transparent py-4"
@@ -33,7 +30,7 @@ const Navbar = () => {
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="text-white italic text-3xl font-bold font-logo">
-          My Courses
+          <img src="/images/logo.png" alt="" className="w-20 h-20" />
         </Link>
 
         <div className="md:hidden">
@@ -52,39 +49,53 @@ const Navbar = () => {
           }`}
         >
           <li>
-            <Link to="/" className="hover:text-secondary text-lg ">
+            <Link
+              to="/"
+              className={`relative text-lg ${
+                location.pathname === "/" ? "active-link" : ""
+              }`}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/courses" className="hover:text-secondary text-lg">
+            <Link
+              to="/courses"
+              className={`relative text-lg ${
+                location.pathname === "/courses" ? "active-link" : ""
+              }`}
+            >
               Courses
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:text-secondary text-lg">
+            <Link
+              to="/contact"
+              className={`relative text-lg ${
+                location.pathname === "/contact" ? "active-link" : ""
+              }`}
+            >
               Contact Us
             </Link>
           </li>
           <li>
-            <Link to="/categories" className="hover:text-secondary text-lg">
+            <Link
+              to="/categories"
+              className={`relative text-lg ${
+                location.pathname === "/categories" ? "active-link" : ""
+              }`}
+            >
               Categories
             </Link>
           </li>
           <li>
-            <Link to="/schedule" className="hover:text-secondary text-lg">
-              Timing Courses
-            </Link>
-          </li>
-          <li>
             <Link
-              to="/cart"
-              className="relative flex items-center justify-center hover:text-secondary text-lg"
+              to="/schedule"
+              className={`relative text-lg ${
+                location.pathname === "/schedule" ? "active-link" : ""
+              }`}
             >
-              <FiShoppingCart className="text-2xl" />
-              <span className="absolute -top-2 -right-2 bg-secondary text-primary text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {totalCourses}
-              </span>
+              Timing Courses
             </Link>
           </li>
         </ul>
@@ -144,18 +155,6 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Timing Courses
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/cart"
-                className="relative flex items-center justify-start hover:text-secondary"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                <FiShoppingCart className="text-2xl" />
-                <span className="absolute -top-2 left-4 bg-secondary text-primary text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {totalCourses}
-                </span>
               </Link>
             </li>
           </ul>

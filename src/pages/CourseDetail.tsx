@@ -1,18 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { Course } from "../types";
-import { useCartStore } from "../store/cartStore";
 import SEO from "../components/SEO";
-import { toast } from "react-toastify";
 import LazyLoad from "react-lazyload";
 export const CourseDetails = () => {
   const { state: course } = useLocation();
-  const addCourse = useCartStore((state) => state.addCourse);
-  function handleAddToCart(course: Course) {
-    addCourse(course);
-    toast.success("Added To Cart !!", {
-      position: "bottom-right",
-    });
-  }
+
   return (
     <main className="flex flex-col gap-16 px-6 py-10 bg-gray-100 overflow-x-hidden">
       <SEO
@@ -62,12 +53,6 @@ export const CourseDetails = () => {
             <p className="text-gray-800">{course.description}</p>
           </div>
           <div className="flex gap-4 mt-4">
-            <button
-              onClick={() => handleAddToCart(course)}
-              className="bg-primary text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 hover:bg-yellow-500"
-            >
-              Add to Cart
-            </button>
             <Link
               to="/courses"
               className="bg-secondary text-primary px-4 py-2 rounded-full shadow-lg transition-all duration-300 hover:bg-gray-700 hover:text-secondary"

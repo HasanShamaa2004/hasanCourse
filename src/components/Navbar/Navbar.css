@@ -1,0 +1,25 @@
+ul li a {
+  position: relative;
+  padding-bottom: 4px;
+}
+
+ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #fbb040; /* لون النقطة والخط */
+  transition: all 0.3s ease;
+}
+
+ul li a:hover::before {
+  left: 0;
+  width: 100%;
+}
+
+.active-link::before {
+  left: 0;
+  width: 100%;
+}

@@ -19,9 +19,9 @@ const Footer = () => {
         <div className="flex md:justify-start lg:ml-4 justify-center">
           <Link
             to="/"
-            className="text-white text-3xl font-bold font-logo italic"
+            className="text-white italic text-3xl font-bold font-logo"
           >
-            My Courses
+            <img src="/images/logo.png" alt="" className="w-24 h-24" />
           </Link>
         </div>
 

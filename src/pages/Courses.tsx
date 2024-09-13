@@ -6,6 +6,7 @@ import SEO from "../components/SEO";
 import { Suspense, lazy } from "react";
 import Loading from "../components/Loading/Loading";
 const CardCourses = lazy(() => import("../components/CardCourses"));
+
 const Courses = () => {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -14,6 +15,7 @@ const Courses = () => {
   const locationParam = params.get("location") || "All";
   const priceParam = params.get("price") || "";
   const dateParam = params.get("date") || "";
+
   const [courses, setCourses] = useState<Course[]>([]);
   const [filteredCourses, setFilteredCourses] = useState<Course[]>([]);
   const [category, setCategory] = useState(categoryParam);
@@ -24,6 +26,7 @@ const Courses = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [locations, setLocations] = useState<string[]>([]);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -32,7 +35,6 @@ const Courses = () => {
         );
         const coursesData = response.data.courses;
         setCourses(coursesData);
-        setFilteredCourses(coursesData);
         const categories = Array.from(
           new Set(
             coursesData
@@ -53,48 +55,52 @@ const Courses = () => {
         console.error("Error fetching the courses:", error);
       }
     };
+
     fetchCourses();
   }, []);
-  const filterCourses = () => {
-    let filtered = courses;
-    if (category !== "All") {
-      filtered = filtered.filter((course) => course.category === category);
-    }
-    if (locationFilter !== "All") {
-      filtered = filtered.filter(
-        (course) => course.location === locationFilter
-      );
-    }
-    if (searchQuery) {
-      filtered = filtered.filter((course) =>
-        course.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    }
-    if (price) {
-      filtered = filtered.filter(
-        (course) => course.price !== undefined && course.price <= Number(price)
-      );
-    }
-    if (date) {
-      filtered = filtered.filter((course) => course.date === date);
-    }
 
-    setFilteredCourses(filtered);
-  };
+  useEffect(() => {
+    const filterCourses = () => {
+      let filtered = courses;
+      if (category !== "All") {
+        filtered = filtered.filter((course) => course.category === category);
+      }
+      if (locationFilter !== "All") {
+        filtered = filtered.filter(
+          (course) => course.location === locationFilter
+        );
+      }
+      if (searchQuery) {
+        filtered = filtered.filter((course) =>
+          course.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+      if (price) {
+        filtered = filtered.filter(
+          (course) =>
+            course.price !== undefined && course.price <= Number(price)
+        );
+      }
+      if (date) {
+        filtered = filtered.filter((course) => course.date === date);
+      }
 
-  const handleSearchClick = () => {
+      setFilteredCourses(filtered);
+    };
+
     filterCourses();
+  }, [searchQuery, category, locationFilter, price, date, courses]);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
   };
+
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setCategory(e.target.value);
   };
 
   const handleLocationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setLocationFilter(e.target.value);
-  };
-
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
   };
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,6 +110,7 @@ const Courses = () => {
   const handleDateChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setDate(e.target.value);
   };
+
   const toggleVisibility = () => {
     if (window.pageYOffset > window.innerHeight / 2) {
       setIsVisible(true);
@@ -111,18 +118,21 @@ const Courses = () => {
       setIsVisible(false);
     }
   };
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
+
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
     return () => {
       window.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
+
   return (
     <main className="container px-6 mx-auto py-8">
       <SEO
@@ -145,7 +155,7 @@ const Courses = () => {
               value={searchQuery}
               onChange={handleSearchChange}
               placeholder="Search by title..."
-              className="w-full p-2 border border-gray-300 md:mb-5 lg:mb-0 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
+              className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
             />
           </div>
           <div className="flex-1">
@@ -206,14 +216,6 @@ const Courses = () => {
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
             />
           </div>
-          <div className="mt-4 md:mt-0">
-            <button
-              onClick={handleSearchClick}
-              className="bg-secondary mt-6 text-white py-2 px-6 rounded-md hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary"
-            >
-              Search
-            </button>
-          </div>
         </div>
       </div>
       {filteredCourses.length === 0 ? (
@@ -250,4 +252,5 @@ const Courses = () => {
     </main>
   );
 };
+
 export default Courses;

@@ -1,6 +1,5 @@
 import {
   FaMapMarkerAlt,
-  FaGlobe,
   FaCalendarAlt,
   FaDollarSign,
   FaTags,
@@ -27,13 +26,13 @@ const CardCourses = ({
 }: CardCoursesProps) => {
   return (
     <div className="container mx-auto p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-screen-xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 max-w-screen-2xl mx-auto">
         {courses.map((course) => (
           <Link
             to={`/courses/${course.id}`}
             state={course}
             key={course.id}
-            className="bg-white text-primary rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 max-w-[400px] mx-auto flex flex-col h-full"
+            className="bg-white text-primary rounded-lg overflow-hidden shadow-lg transition-transform transform hover:scale-105 max-w-[320px] mx-auto flex flex-col h-full"
           >
             <img
               src={course.image}
@@ -67,18 +66,9 @@ const CardCourses = ({
               )}
               {showLocation && (
                 <div className="text-gray-700 mb-2 flex items-center">
+                  <FaMapMarkerAlt className="mr-1 text-red-500" />
                   <strong className="mr-2">Location :</strong>
-                  {course.location === "Online" ? (
-                    <>
-                      <FaGlobe className="mr-1 text-blue-500" />
-                      <p>Online</p>
-                    </>
-                  ) : (
-                    <>
-                      <FaMapMarkerAlt className="mr-1 text-red-500" />
-                      <p>{course.location}</p>
-                    </>
-                  )}
+                  <p>{course.location}</p>
                 </div>
               )}
             </div>

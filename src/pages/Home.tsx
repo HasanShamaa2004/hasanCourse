@@ -22,8 +22,6 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedLocation, setSelectedLocation] = useState<string>("");
-  const [selectedPrice, setSelectedPrice] = useState<number | undefined>();
-  const [selectedDate, setSelectedDate] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -73,10 +71,6 @@ const Home = () => {
     if (searchQuery) searchParams.set("title", searchQuery);
     if (selectedCategory) searchParams.set("category", selectedCategory);
     if (selectedLocation) searchParams.set("location", selectedLocation);
-    if (selectedPrice !== undefined)
-      searchParams.set("price", selectedPrice.toString());
-    if (selectedDate) searchParams.set("date", selectedDate);
-
     navigate(`/courses?${searchParams.toString()}`);
   };
 
@@ -89,15 +83,15 @@ const Home = () => {
         author="Hasan Shamaa"
       />
       <div
-        className="relative w-full h-screen md:h-[60vh] lg:h-[70vh] bg-cover bg-center bg-no-repeat"
+        className="relative w-full h-screen md:h-[40vh] lg:h-[50vh] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('/images/slider1.webp')` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center p-4 md:p-8 lg:p-12">
-          <div className="bg-white p-4 mt-12 rounded-lg shadow-lg">
-            <h1 className="text-4xl font-semibold text-gray-700">
+        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col md:justify-end justify-center items-center text-center">
+          <div className="bg-white border border-secondary max-w-7xl w-full p-4 mb-[-80px] rounded-lg shadow-lg">
+            <h1 className="text-4xl font-secondary font-semibold text-gray-700">
               Searching the Course
             </h1>
-            <div className=" p-4 md:p-6 w-full max-w-4xl mx-auto flex flex-col gap-4 md:flex-row md:gap-2">
+            <div className=" p-4 md:p-6 w-full mx-auto flex flex-col gap-4 md:flex-row md:gap-2">
               <input
                 type="text"
                 placeholder="Search by title..."
@@ -129,20 +123,6 @@ const Home = () => {
                   </option>
                 ))}
               </select>
-              <input
-                type="number"
-                placeholder="Max Price"
-                value={selectedPrice || ""}
-                onWheel={(event) => event.currentTarget.blur()}
-                onChange={(e) => setSelectedPrice(Number(e.target.value))}
-                className="p-2 border text-primary border-gray-300 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent md:flex-grow"
-              />
-              <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
-                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
-              />
               <button
                 onClick={handleSearch}
                 className="bg-secondary hover:bg-yellow-500 text-xl text-primary font-semibold px-6 py-2 rounded-md w-full md:w-auto"
@@ -153,17 +133,18 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-6">
-        Featured Courses
+      <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-24">
+        App Coming Courses
       </h2>
       <Suspense fallback={<Loading />}>
         <CardCourses
-          courses={courses.slice(0, 4)}
+          courses={courses.slice(0, 5)}
           showCategory
           showDate
           showLocation
         />
       </Suspense>
+      <Statistics />
 
       <div className="bg-gray-900 py-14 px-14">
         <Swiper
@@ -192,7 +173,10 @@ const Home = () => {
           autoplay={{
             disableOnInteraction: true,
           }}
+          className="test"
         >
+          <div className="swiper-button-prev"></div>
+          <div className="swiper-button-next"></div>
           {categorie.map((category) => (
             <SwiperSlide key={category.id}>
               <Suspense fallback={<Loading />}>
@@ -200,11 +184,8 @@ const Home = () => {
               </Suspense>
             </SwiperSlide>
           ))}
-          <div className="swiper-button-prev"></div>
-          <div className="swiper-button-next"></div>
         </Swiper>
       </div>
-      <Statistics />
       <HowMyCourses />
     </main>
   );

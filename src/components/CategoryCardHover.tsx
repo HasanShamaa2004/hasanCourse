@@ -43,6 +43,11 @@ const CategoryCardHover = ({ category }: CategoryCardProps) => {
           className="w-full h-48 object-cover transition-transform transform hover:scale-105"
         />
       </LazyLoad>
+      {isHovered === false && (
+        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center p-2">
+          <h3 className="text-xl font-bold">{category.title}</h3>
+        </div>
+      )}
 
       {isHovered && (
         <motion.div

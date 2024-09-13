@@ -1,0 +1,38 @@
+/* SocialIcons.css */
+.social-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.social-icon {
+  position: relative;
+  margin-bottom: 1rem; /* Adjust spacing between icons */
+  padding: 0.75rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tooltip-text {
+  display: inline-block;
+  position: absolute;
+  left: 110%; /* Position the tooltip to the right of the icon */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 0.75rem;
+  z-index: 10; /* Ensure tooltip is above other content */
+}
+
+.social-icon:hover .tooltip-text {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}

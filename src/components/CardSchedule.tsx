@@ -1,25 +1,13 @@
 import React from "react";
 import { Course } from "../types";
-import { useCartStore } from "../store/cartStore";
-import { Link } from "react-router-dom"; // لاستخدامه للتنقل إلى صفحة التفاصيل
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 interface CardScheduleProps {
   course: Course;
   onAddToCart: (course: Course) => void;
 }
 
-const CardSchedule: React.FC<CardScheduleProps> = ({ course, onAddToCart }) => {
-  const addCourse = useCartStore((state) => state.addCourse);
-
-  const handleAddToCart = () => {
-    addCourse(course);
-    if (onAddToCart) onAddToCart(course);
-    toast.success("Added To Cart !!", {
-      position: "bottom-right",
-    });
-  };
-
+const CardSchedule: React.FC<CardScheduleProps> = ({ course }) => {
   return (
     <div className="flex flex-col md:flex-row items-start bg-white shadow-lg rounded-lg overflow-hidden mb-6">
       <div className="w-full md:w-1/4 p-4">
@@ -40,12 +28,6 @@ const CardSchedule: React.FC<CardScheduleProps> = ({ course, onAddToCart }) => {
           <strong>Date:</strong> {course.date}
         </span>
         <div className="flex space-x-4 justify-end">
-          <button
-            onClick={handleAddToCart}
-            className="bg-primary text-white px-4 py-2 rounded-full shadow-lg transition-all duration-300 hover:bg-yellow-500"
-          >
-            Add to Cart
-          </button>
           <Link
             to={`/courses/${course.id}`}
             state={course}
