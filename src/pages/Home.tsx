@@ -13,8 +13,9 @@ import Loading from "../components/Loading/Loading";
 import HowMyCourses from "../components/HowMyCourses";
 import Statistics from "../components/Statistics";
 import SocialIcons from "../components/SocialIcons/SocialIcons";
+import NewsTicker from "../components/NewsTicker/NewsTicker";
 const CategoryCardHover = lazy(() => import("../components/CategoryCardHover"));
-const CardCourses = lazy(() => import("../components/CardCourses"));
+const CardCourses = lazy(() => import("../components/CardCourses/CardCourses"));
 
 const Home = () => {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -25,7 +26,20 @@ const Home = () => {
   const [selectedLocation, setSelectedLocation] = useState<string>("");
 
   const navigate = useNavigate();
-
+  const images = [
+    "/images/trust/trust1.png",
+    "/images/trust/trust2.png",
+    "/images/trust/trust3.jpg",
+    "/images/trust/trust4.png",
+    "/images/trust/trust5.png",
+    "/images/trust/trust6.jpg",
+    "/images/trust/trust7.jpg",
+    "/images/trust/trust8.png",
+    "/images/trust/trust9.png",
+    "/images/trust/trust10.png",
+    "/images/trust/trust11.jpg",
+    "/images/trust/trust12.png",
+  ];
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -98,12 +112,12 @@ const Home = () => {
                 placeholder="Search by title..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
               />
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
               >
                 <option value="">All Categories</option>
                 {categories.map((category) => (
@@ -115,7 +129,7 @@ const Home = () => {
               <select
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
-                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow"
+                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
               >
                 <option value="">All Locations</option>
                 {locations.map((location) => (
@@ -147,9 +161,7 @@ const Home = () => {
           />
         </Suspense>
       </div>
-
       <Statistics />
-
       <div className="bg-gray-900 py-14 px-20">
         <Swiper
           spaceBetween={30}
@@ -191,6 +203,7 @@ const Home = () => {
         </Swiper>
       </div>
       <HowMyCourses />
+      <NewsTicker images={images} />
       <SocialIcons />
     </main>
   );

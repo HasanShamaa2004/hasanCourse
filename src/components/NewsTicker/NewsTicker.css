@@ -1,0 +1,25 @@
+/* NewsTicker.css */
+.news-ticker-container {
+  border-top: 2px solid #fbb040; /* تغيير اللون حسب الحاجة */
+  border-bottom: 2px solid #fbb040; /* تغيير اللون حسب الحاجة */
+  overflow: hidden;
+  width: 100%;
+}
+
+.news-ticker-swiper {
+  width: 150;
+  height: 150px; /* ارتفاع الشريط الإخباري، يمكن تعديله حسب الحاجة */
+}
+
+.news-ticker-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.news-ticker-image {
+  width: 100%;
+  max-width: 150px; /* عرض الصورة، يمكن تعديله حسب الحاجة */
+  height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  object-fit: contain;
+}

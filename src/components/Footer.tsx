@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Footer = () => {
+  const handleSubscribe = () => {
+    toast.success("Subscribe sent successfully!", {
+      position: "bottom-right",
+    });
+  };
+
   return (
     <footer className="bg-gray-900 text-gray-300 py-6 px-4">
       <div className="container mx-auto text-center px-8">
@@ -10,7 +17,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ml-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ml-8 mt-12">
           {/* Column 1: Site Links */}
           <div className="text-left">
             <h3 className="text-xl font-semibold text-white mb-4">
@@ -29,9 +36,6 @@ const Footer = () => {
               <li className="mb-2">
                 <Link to="/courses">Courses</Link>
               </li>
-              {/* <li className="mb-2">
-                <Link to="/faq">FAQ</Link>
-              </li> */}
             </ul>
           </div>
 
@@ -66,6 +70,27 @@ const Footer = () => {
             <p className="mb-2">Location: 1234 Street Name, City, Country</p>
             <p className="mb-2">Phone: +123 456 7890</p>
             <p>Email: contact@yourcompany.com</p>
+          </div>
+
+          {/* Column 4: Join Our Newsletter */}
+          <div className="text-left">
+            <h3 className="text-xl font-semibold text-white mb-4">
+              Join Our Newsletter
+            </h3>
+            <p className="text-lg mb-8">
+              Get the latest updates on new courses, special offers, and events.
+            </p>
+            <input
+              type="email"
+              className="w-full p-3 rounded-lg text-gray-900 outline-none mb-4"
+              placeholder="Enter your email address"
+            />
+            <button
+              onClick={handleSubscribe}
+              className="bg-secondary hover:bg-yellow-500 text-primary font-semibold px-8 py-3 rounded shadow-lg transition-all duration-300"
+            >
+              Subscribe
+            </button>
           </div>
         </div>
 

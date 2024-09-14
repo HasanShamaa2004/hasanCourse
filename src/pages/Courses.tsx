@@ -5,7 +5,7 @@ import { Course } from "../types";
 import SEO from "../components/SEO";
 import { Suspense, lazy } from "react";
 import Loading from "../components/Loading/Loading";
-const CardCourses = lazy(() => import("../components/CardCourses"));
+const CardCourses = lazy(() => import("../components/CardCourses/CardCourses"));
 
 const Courses = () => {
   const location = useLocation();

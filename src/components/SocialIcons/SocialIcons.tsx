@@ -29,7 +29,7 @@ const SocialIcons = () => {
   }, []);
 
   return (
-    <div className="fixed md:block hidden top-1/2 left-4 transform -translate-y-1/2 space-y-4 z-[100]">
+    <div className="fixed md:block hidden top-1/2 left-6 transform -translate-y-1/2 space-y-4 z-[100]">
       <div
         className={`flex flex-col items-center ${
           showIcons ? "opacity-100" : "opacity-0"

@@ -1,0 +1,90 @@
+.card-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  padding: 16px; /* Ensure padding is included in the size */
+  transition: transform 0.3s ease-in-out;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid #fbb040;
+  border-radius: 8px;
+  transition: transform 0.2s ease-in-out;
+  transform: scale(0); /* Start with border hidden */
+  transform-origin: center;
+}
+
+.card:hover::before {
+  transform: scale(1); /* Scale border to full size on hover */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1; /* Ensure content is above the border animation */
+}
+
+.card:hover::before {
+  animation: borderAnimation 1s forwards;
+  -webkit-animation: borderAnimation 1s forwards;
+}
+
+@keyframes borderAnimation {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-width: 2px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+  }
+  25% {
+    width: 100%;
+    height: 0;
+    border-top-width: 2px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+  }
+  50% {
+    width: 100%;
+    height: 100%;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 0;
+    border-left-width: 0;
+  }
+  75% {
+    width: 100%;
+    height: 100%;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 0;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+  }
+}
