@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 px-6 py-3 w-full z-30 transition-all duration-300 ${
+      className={`fixed top-0 left-0 px-6 py-1 w-full z-30 transition-all duration-300 ${
         isScrolled || location.pathname !== "/"
           ? "bg-gray-900 shadow-lg py-2"
           : "bg-transparent py-4"
@@ -102,9 +102,9 @@ const Navbar = () => {
               Timing Courses
             </Link>
           </li>
-          {/* <li>
-            <LanguageSwitcher />
-          </li> */}
+          <li className="cursor-pointer">
+            <h1>الكورسات بالعربية</h1>
+          </li>
         </ul>
 
         <aside
@@ -163,6 +163,9 @@ const Navbar = () => {
               >
                 Timing Courses
               </Link>
+            </li>
+            <li className="cursor-pointer">
+              <h1>الكورسات بالعربية </h1>
             </li>
           </ul>
         </aside>

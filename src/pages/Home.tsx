@@ -117,7 +117,7 @@ const Home = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
+                className="p-2 border text-primary border-gray-300 focus:outline-none font-semibold focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
               >
                 <option value="">All Categories</option>
                 {categories.map((category) => (
@@ -129,7 +129,7 @@ const Home = () => {
               <select
                 value={selectedLocation}
                 onChange={(e) => setSelectedLocation(e.target.value)}
-                className="p-2 border text-primary border-gray-300 focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
+                className="p-2 border text-primary border-gray-300 font-semibold focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent rounded-md w-full md:flex-grow placeholder:font-bold"
               >
                 <option value="">All Locations</option>
                 {locations.map((location) => (

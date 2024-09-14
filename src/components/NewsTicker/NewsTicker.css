@@ -8,7 +8,7 @@
 
 .news-ticker-swiper {
   width: 150;
-  height: 150px; /* ارتفاع الشريط الإخباري، يمكن تعديله حسب الحاجة */
+  height: 120px; /* ارتفاع الشريط الإخباري، يمكن تعديله حسب الحاجة */
 }
 
 .news-ticker-slide {
@@ -19,7 +19,7 @@
 
 .news-ticker-image {
   width: 100%;
-  max-width: 150px; /* عرض الصورة، يمكن تعديله حسب الحاجة */
+  max-width: 120px; /* عرض الصورة، يمكن تعديله حسب الحاجة */
   height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
   object-fit: contain;
 }
