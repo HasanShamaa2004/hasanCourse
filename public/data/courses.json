@@ -7,7 +7,7 @@
       "description": "Learn the basics of programming with hands-on exercises and real-world projects. This course covers fundamental programming concepts, including variables, data types, control structures, and basic algorithms. Ideal for beginners who want to start a career in software development or enhance their problem-solving skills.",
       "date": "2024-09-15",
       "image": "/images/programing.webp",
-      "location":"Online",
+      "location": "Online",
       "price": 300
     },
     {
@@ -57,7 +57,7 @@
       "description": "Develop essential leadership skills to effectively manage teams and drive organizational success. This course covers leadership theories, communication strategies, conflict resolution, and change management. Gain insights into motivating and leading others, making strategic decisions, and enhancing your leadership capabilities.",
       "date": "2024-10-10",
       "image": "/images/business1.webp",
-      "location":"Online",
+      "location": "Online",
       "price": 280
     },
     {
@@ -97,7 +97,7 @@
       "description": "Gain a foundational understanding of nutrition science, including the roles of macronutrients and micronutrients, dietary guidelines, and healthy eating practices. This course explores how nutrition impacts overall health and wellness, providing practical advice for improving your diet and lifestyle.",
       "date": "2024-11-15",
       "image": "/images/health1.webp",
-      "location":"Online",
+      "location": "Online",
       "price": 220
     },
     {
@@ -130,5 +130,11 @@
       "image": "/images/health4.webp",
       "price": 300
     }
-  ]
+  ],
+  "date": "Date",
+  "category": "Category",
+  "price": "Price",
+  "location": "Location",
+  "title": "Title",
+  "description": "Description"
 }

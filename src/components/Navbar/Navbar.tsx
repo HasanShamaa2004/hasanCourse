@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import "./Navbar.css";
+// import LanguageSwitcher from "../LanguageSwitcher";
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +30,10 @@ const Navbar = () => {
       }`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="text-white italic text-3xl font-bold font-logo">
+        <Link
+          to="/"
+          className="text-white italic text-3xl ml-3 font-bold font-logo"
+        >
           <img src="/images/logo.png" alt="" className="w-20 h-20" />
         </Link>
 
@@ -98,6 +102,9 @@ const Navbar = () => {
               Timing Courses
             </Link>
           </li>
+          {/* <li>
+            <LanguageSwitcher />
+          </li> */}
         </ul>
 
         <aside

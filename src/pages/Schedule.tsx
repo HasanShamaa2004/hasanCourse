@@ -89,7 +89,7 @@ const Schedule = () => {
   }, []);
 
   return (
-    <main className="container px-6 mx-auto py-8">
+    <main className="container px-6 mt-16 mx-auto py-8">
       <h1 className="text-4xl font-bold mb-6 mt-12 text-center">
         Timing Courses
       </h1>

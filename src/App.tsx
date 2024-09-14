@@ -8,8 +8,15 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer";
 import { CourseDetails } from "./pages/CourseDetail";
 import ScrollToTopOnPageChange from "../ScrollToTopOnPageChange";
+import { useTranslation } from "react-i18next";
+import { useEffect } from "react";
 
 const App = () => {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.body.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
   return (
     <>
       <ScrollToTopOnPageChange />

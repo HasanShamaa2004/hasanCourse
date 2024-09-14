@@ -134,7 +134,7 @@ const Courses = () => {
   }, []);
 
   return (
-    <main className="container px-6 mx-auto py-8">
+    <main className="container px-6 mt-16 mx-auto py-8">
       <SEO
         title="Courses - Explore Our Wide Range of Courses"
         description="Browse and search through our diverse range of courses. Filter by category, location, and more to find the perfect course for you."

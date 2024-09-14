@@ -19,7 +19,7 @@ const CategoriesPage = () => {
     fetchCategories();
   }, []);
   return (
-    <main className="container mx-auto py-8 mt-8 px-6">
+    <main className="container mx-auto py-8 mt-16 px-6">
       <SEO
         title="Categories - Explore Our Course Categories"
         description="Discover our wide range of course categories. Find the perfect category that fits your learning interests and goals."

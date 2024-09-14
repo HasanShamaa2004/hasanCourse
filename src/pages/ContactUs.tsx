@@ -30,7 +30,7 @@ const ContactUs = () => {
     }, 2000);
   };
   return (
-    <main className="container mx-auto py-8 px-6">
+    <main className="container mx-auto mt-16 py-8 px-6">
       <SEO
         title="Contact Us - Your Course Website"
         description="Get in touch with us for any inquiries or questions about our courses and services. We'd love to hear from you!"

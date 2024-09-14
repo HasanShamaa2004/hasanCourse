@@ -135,7 +135,7 @@ const Home = () => {
         </div>
       </div>
       <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-24">
-        App Coming Courses
+        UpComing Courses
       </h2>
       <div className="px-14">
         <Suspense fallback={<Loading />}>

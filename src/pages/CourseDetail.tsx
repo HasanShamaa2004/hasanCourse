@@ -5,7 +5,7 @@ export const CourseDetails = () => {
   const { state: course } = useLocation();
 
   return (
-    <main className="flex flex-col gap-16 px-6 py-10 bg-gray-100 overflow-x-hidden">
+    <main className="flex flex-col mt-16 gap-16 px-6 py-10 bg-gray-100 overflow-x-hidden">
       <SEO
         title={course.title}
         description={course.description}
