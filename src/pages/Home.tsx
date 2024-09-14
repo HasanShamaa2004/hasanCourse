@@ -12,6 +12,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import Loading from "../components/Loading/Loading";
 import HowMyCourses from "../components/HowMyCourses";
 import Statistics from "../components/Statistics";
+import SocialIcons from "../components/SocialIcons/SocialIcons";
 const CategoryCardHover = lazy(() => import("../components/CategoryCardHover"));
 const CardCourses = lazy(() => import("../components/CardCourses"));
 
@@ -136,17 +137,20 @@ const Home = () => {
       <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-24">
         App Coming Courses
       </h2>
-      <Suspense fallback={<Loading />}>
-        <CardCourses
-          courses={courses.slice(0, 5)}
-          showCategory
-          showDate
-          showLocation
-        />
-      </Suspense>
+      <div className="px-14">
+        <Suspense fallback={<Loading />}>
+          <CardCourses
+            courses={courses.slice(0, 5)}
+            showCategory
+            showDate
+            showLocation
+          />
+        </Suspense>
+      </div>
+
       <Statistics />
 
-      <div className="bg-gray-900 py-14 px-14">
+      <div className="bg-gray-900 py-14 px-20">
         <Swiper
           spaceBetween={30}
           slidesPerView={1}
@@ -187,6 +191,7 @@ const Home = () => {
         </Swiper>
       </div>
       <HowMyCourses />
+      <SocialIcons />
     </main>
   );
 };

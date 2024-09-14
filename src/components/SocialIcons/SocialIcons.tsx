@@ -29,7 +29,7 @@ const SocialIcons = () => {
   }, []);
 
   return (
-    <div className="fixed top-1/2 right-0 transform -translate-y-1/2 space-y-4 z-[100]">
+    <div className="fixed md:block hidden top-1/2 left-6 transform -translate-y-1/2 space-y-4 z-[100]">
       <div
         className={`flex flex-col items-center ${
           showIcons ? "opacity-100" : "opacity-0"
@@ -40,7 +40,7 @@ const SocialIcons = () => {
             href="https://wa.me/+963967600797"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-icon bg-white text-green-500"
+            className="social-icon bg-green-500 text-white"
             data-tooltip="WhatsApp"
           >
             <FaWhatsapp size={20} />
@@ -50,7 +50,7 @@ const SocialIcons = () => {
             href="https://www.linkedin.com/in/hasan-shamaa-a02925288?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-icon bg-white text-blue-700"
+            className="social-icon bg-blue-700 text-white"
             data-tooltip="LinkedIn"
           >
             <FaLinkedinIn size={20} />
@@ -60,7 +60,7 @@ const SocialIcons = () => {
             href="https://www.instagram.com/hasan.shamaa7?igsh=aHg5bWQwZW5sczd2"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-icon bg-white text-pink-500"
+            className="social-icon bg-pink-500 text-white"
             data-tooltip="Instagram"
           >
             <FaInstagram size={20} />
@@ -70,7 +70,7 @@ const SocialIcons = () => {
             href="https://www.facebook.com/mahmod.lattakia.946?mibextid=ZbWKwL"
             target="_blank"
             rel="noopener noreferrer"
-            className="social-icon bg-white text-blue-600"
+            className="social-icon bg-blue-600 text-white"
             data-tooltip="Facebook"
           >
             <FaFacebookF size={20} />
