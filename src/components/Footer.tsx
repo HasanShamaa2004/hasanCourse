@@ -44,19 +44,19 @@ const Footer = () => {
             <h3 className="text-xl font-semibold text-white mb-4">Courses</h3>
             <ul>
               <li className="mb-2">
-                <Link to="/course">Web Development</Link>
+                <Link to="/courses">Web Development</Link>
               </li>
               <li className="mb-2">
-                <Link to="/course">Data Science</Link>
+                <Link to="/courses">Data Science</Link>
               </li>
               <li className="mb-2">
-                <Link to="/course">Design</Link>
+                <Link to="/courses">Design</Link>
               </li>
               <li className="mb-2">
-                <Link to="/course">Marketing</Link>
+                <Link to="/courses">Marketing</Link>
               </li>
               <li className="mb-2">
-                <Link to="/course">More Courses</Link>
+                <Link to="/courses">More Courses</Link>
               </li>
             </ul>
           </div>

@@ -203,7 +203,9 @@ const Home = () => {
         </Swiper>
       </div>
       <HowMyCourses />
-      <NewsTicker images={images} />
+      <div className="px-20">
+        <NewsTicker images={images} />
+      </div>
       <SocialIcons />
     </main>
   );

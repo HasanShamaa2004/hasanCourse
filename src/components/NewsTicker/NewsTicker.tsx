@@ -5,7 +5,7 @@ import { Autoplay } from "swiper/modules";
 
 const NewsTicker = ({ images }: { images: string[] }) => {
   return (
-    <div className="news-ticker-container">
+    <div className="news-ticker-container md:px-20 px-10">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={10} // المسافة بين الصور
