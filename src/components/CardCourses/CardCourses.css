@@ -42,8 +42,8 @@
 }
 
 .card:hover::before {
-  animation: borderAnimation 1s forwards;
-  -webkit-animation: borderAnimation 1s forwards;
+  animation: borderAnimation 0.8s forwards;
+  -webkit-animation: borderAnimation 0.8s forwards;
 }
 
 @keyframes borderAnimation {

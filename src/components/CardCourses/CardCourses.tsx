@@ -33,7 +33,7 @@ const CardCourses = ({
             to={`/courses/${course.id}`}
             state={course}
             key={course.id}
-            className="shadow-lg card group card-container rounded-lg"
+            className="shadow-lg card group card-container rounded-lg hover:scale-110"
           >
             <div className="">
               <img
