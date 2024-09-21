@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+// import { useHref } from "react-router-dom";
 import "./Navbar.css";
 // import LanguageSwitcher from "../LanguageSwitcher";
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  // const href = useHref("/categories");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,9 +27,7 @@ const Navbar = () => {
   return (
     <header
       className={`fixed top-0 left-0 px-6 py-1 w-full z-30 transition-all duration-300 ${
-        isScrolled || location.pathname !== "/"
-          ? "bg-gray-900 shadow-lg py-2"
-          : "bg-transparent py-4"
+        isScrolled ? "bg-gray-900 shadow-lg py-2" : "bg-transparent py-4"
       }`}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
@@ -165,7 +166,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="cursor-pointer">
-              <h1>الكورسات بالعربية </h1>
+              <h1>الكورسات بالعربية</h1>
             </li>
           </ul>
         </aside>

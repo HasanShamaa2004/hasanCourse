@@ -13,8 +13,8 @@ export default {
         white: "#FFFFFF",
       },
       fontFamily: {
-        primary: ["Poppins", "sans-serif"],
-        secondary: ["Roboto", "sans-serif"],
+        primary: ['"Poppins"'],
+        secondary: ['"Roboto"', "sans-serif"],
         logo: ['"Playfair Display"', "serif"],
       },
     },

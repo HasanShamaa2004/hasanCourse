@@ -8,13 +8,18 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { Suspense, lazy } from "react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 import Loading from "../components/Loading/Loading";
 import HowMyCourses from "../components/HowMyCourses";
 import Statistics from "../components/Statistics";
 import SocialIcons from "../components/SocialIcons/SocialIcons";
 import NewsTicker from "../components/NewsTicker/NewsTicker";
 import { motion } from "framer-motion";
+import Select, { selectClasses } from "@mui/joy/Select";
+import Option from "@mui/joy/Option";
+import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+import { FaListAlt, FaMapMarkerAlt, FaSearch } from "react-icons/fa";
+import HeroSection from "../components/HeroSection";
 const CategoryCardHover = lazy(() => import("../components/CategoryCardHover"));
 const CardCourses = lazy(() => import("../components/CardCourses/CardCourses"));
 
@@ -23,10 +28,11 @@ const Home = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [locations, setLocations] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [selectedLocation, setSelectedLocation] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
   const navigate = useNavigate();
+  const images1 = ["/images/slider1.webp", "/images/bgcat.jpg"];
   const images = [
     "/images/trust/trust1.png",
     "/images/trust/trust2.png",
@@ -68,6 +74,7 @@ const Home = () => {
     };
     fetchData();
   }, []);
+
   const [categorie, setCategorie] = useState<Category[]>([]);
 
   useEffect(() => {
@@ -89,10 +96,7 @@ const Home = () => {
     if (selectedLocation) searchParams.set("location", selectedLocation);
     navigate(`/courses?${searchParams.toString()}`);
   };
-  const optionAnimation = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-  };
+
   return (
     <main className="bg-white text-gray-700 min-h-screen">
       <SEO
@@ -101,108 +105,137 @@ const Home = () => {
         keywords="courses, technology, business, design"
         author="Hasan Shamaa"
       />
-      <div
-        className="relative w-full h-screen md:h-[40vh] lg:h-[50vh] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/images/slider1.webp')` }}
-      >
-        <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col md:justify-end justify-center items-center text-center">
-          <div className="bg-gradient-to-r from-primary to-secondary max-w-7xl w-full p-8 mb-[-130px] rounded-lg shadow-2xl space-y-8">
-            <motion.h1
-              className="text-5xl font-secondary font-bold text-white"
-              initial={{ opacity: 0, y: -50 }}
-              animate={{ opacity: 1, y: 0 }}
+      {/* <div className="relative h-[35vh] md:h-[40vh] lg:h-[50vh]">
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={1}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          modules={[Autoplay, Pagination, Navigation]}
+        >
+          {images1.map((img, index) => (
+            <SwiperSlide key={index} className="swiper-slide1">
+              <img
+                src={img}
+                alt={`Slide ${index}`}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black opacity-60"></div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        <div className="absolute inset-0 flex mt-12 items-center justify-start z-20 p-6">
+          <div className="text-left mb-8 ml-6 p-4 bg-transparent">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              Searching the Course
-            </motion.h1>
-            <motion.div
-              className="p-6 w-full mx-auto flex flex-col gap-8 md:flex-row"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <motion.input
-                type="text"
-                placeholder="Search by title..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="p-4 border text-gray-900 font-primary border-gray-300 focus:outline-none focus:ring-4 focus:ring-secondary focus:border-transparent rounded-lg w-full md:flex-grow placeholder:font-semibold placeholder:text-gray-600 bg-white transition-all duration-300"
-                whileFocus={{ scale: 1.05, backgroundColor: "#f8f8f8" }}
-                whileHover={{ scale: 1.03 }}
-              />
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary font-bold text-white mb-4">
+                Front End Developer
+              </h2>
+              <p className="text-lg md:text-xl lg:text-2xl font-primary text-white">
+                <strong>Date:</strong> 20th September 2024
+              </p>
+              <p className="text-lg md:text-xl lg:text-2xl font-primary text-white">
+                <strong>Location:</strong> Online
+              </p>
+              <p className="text-lg md:text-xl lg:text-2xl font-primary text-white">
+                <strong>Category:</strong> Web Development
+              </p>
+            </motion.div>
+          </div>
 
-              <motion.select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="p-4 border text-gray-900 font-primary border-gray-300 focus:outline-none focus:ring-4 focus:ring-secondary focus:border-transparent rounded-lg w-full md:flex-grow bg-white transition-all duration-300"
-                whileFocus={{ scale: 1.05, backgroundColor: "#f8f8f8" }}
-                whileHover={{ scale: 1.03 }}
+          <div className="w-full max-w-4xl bg-white translate-y-[80%] p-5 rounded-lg shadow-lg relative">
+            <div className="text-center mb-4">
+              <h3 className="text-3xl font-primary font-semibold text-gray-700">
+                Find Your Course
+              </h3>
+            </div>
+            <div className="flex flex-col gap-4 lg:flex-row lg:gap-6">
+              <motion.div
+                className="flex flex-col lg:flex-row gap-4 w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
               >
-                <motion.option
-                  value=""
-                  className="text-gray-700 font-semibold"
-                  initial="hidden"
-                  animate="visible"
-                  variants={optionAnimation}
-                >
-                  All Categories
-                </motion.option>
-                {categories.map((category) => (
-                  <motion.option
-                    key={category}
-                    value={category}
-                    className="text-gray-700 font-semibold"
-                    initial="hidden"
-                    animate="visible"
-                    variants={optionAnimation}
+                <div className="relative flex-1">
+                  <FaSearch className="absolute left-3 top-[50%] transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search by title..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10 p-3 w-full rounded-md text-gray-900 focus:ring-4 outline-none border border-gray-300"
+                    style={{ height: "3rem" }}
+                  />
+                </div>
+                <div className="relative flex-1">
+                  <Select
+                    placeholder="Select a category..."
+                    value={selectedCategory}
+                    onChange={(_e, value) => setSelectedCategory(value)}
+                    indicator={<KeyboardArrowDown />}
+                    startDecorator={<FaListAlt />}
+                    sx={{
+                      width: "100%",
+                      [`& .${selectClasses.indicator}`]: {
+                        transition: "0.2s",
+                        [`&.${selectClasses.expanded}`]: {
+                          transform: "rotate(-180deg)",
+                        },
+                      },
+                    }}
+                    style={{ height: "3rem" }}
                   >
-                    {category}
-                  </motion.option>
-                ))}
-              </motion.select>
-
-              <motion.select
-                value={selectedLocation}
-                onChange={(e) => setSelectedLocation(e.target.value)}
-                className="p-4 border text-gray-900 font-primary border-gray-300 focus:outline-none focus:ring-4 focus:ring-secondary focus:border-transparent rounded-lg w-full md:flex-grow bg-white transition-all duration-300"
-                whileFocus={{ scale: 1.05, backgroundColor: "#f8f8f8" }}
-                whileHover={{ scale: 1.03 }}
-              >
-                <motion.option
-                  value=""
-                  className="text-gray-700 font-semibold"
-                  initial="hidden"
-                  animate="visible"
-                  variants={optionAnimation}
-                >
-                  All Locations
-                </motion.option>
-                {locations.map((location) => (
-                  <motion.option
-                    key={location}
-                    value={location}
-                    className="text-gray-700 font-semibold"
-                    initial="hidden"
-                    animate="visible"
-                    variants={optionAnimation}
+                    {categories.map((category) => (
+                      <Option key={category} value={category}>
+                        {category}
+                      </Option>
+                    ))}
+                  </Select>
+                </div>
+                <div className="relative flex-1">
+                  <Select
+                    placeholder="Select a location..."
+                    value={selectedLocation}
+                    onChange={(_e, value) => setSelectedLocation(value)}
+                    indicator={<KeyboardArrowDown />}
+                    startDecorator={<FaMapMarkerAlt />}
+                    sx={{
+                      width: "100%",
+                      [`& .${selectClasses.indicator}`]: {
+                        transition: "0.2s",
+                        [`&.${selectClasses.expanded}`]: {
+                          transform: "rotate(-180deg)",
+                        },
+                      },
+                    }}
+                    style={{ height: "3rem" }}
                   >
-                    {location}
-                  </motion.option>
-                ))}
-              </motion.select>
-
+                    {locations.map((location) => (
+                      <Option key={location} value={location}>
+                        {location}
+                      </Option>
+                    ))}
+                  </Select>
+                </div>
+              </motion.div>
               <motion.button
+                className="bg-secondary text-white rounded-md px-3 flex-shrink-0 transition-all duration-300"
                 onClick={handleSearch}
-                className="bg-primary hover:bg-secondary text-xl text-white font-bold px-8 py-4 rounded-lg w-full md:w-auto shadow-lg transition-colors duration-300"
                 whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Search
               </motion.button>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </div>
-      <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-36">
+      </div> */}
+      <HeroSection />
+      <h2 className="text-5xl text-center py-4 font-secondary mb-4 mt-[100px]">
         UpComing Courses
       </h2>
       <div className="px-14">
@@ -221,32 +254,19 @@ const Home = () => {
           spaceBetween={30}
           slidesPerView={1}
           breakpoints={{
-            640: {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            768: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-            },
-            1024: {
-              slidesPerView: 4,
-              spaceBetween: 40,
-            },
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            768: { slidesPerView: 3, spaceBetween: 30 },
+            1024: { slidesPerView: 4, spaceBetween: 40 },
           }}
+          pagination={{ clickable: true }}
           // navigation={{
           //   prevEl: ".swiper-button-prev",
           //   nextEl: ".swiper-button-next",
           // }}
-          pagination={{ clickable: true }}
           modules={[Pagination, Autoplay]}
-          autoplay={{
-            disableOnInteraction: true,
-          }}
-          className="test"
+          autoplay={{ disableOnInteraction: true }}
+          className="swiper-container"
         >
-          {/* <div className="swiper-button-prev"></div>
-          <div className="swiper-button-next"></div> */}
           {categorie.map((category) => (
             <SwiperSlide key={category.id}>
               <Suspense fallback={<Loading />}>
@@ -254,6 +274,8 @@ const Home = () => {
               </Suspense>
             </SwiperSlide>
           ))}
+          {/* <div className="swiper-button-next">Next</div>
+          <div className="swiper-button-prev">Prev</div> */}
         </Swiper>
       </div>
       <HowMyCourses />

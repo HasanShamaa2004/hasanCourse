@@ -36,6 +36,9 @@ const Footer = () => {
               <li className="mb-2">
                 <Link to="/courses">Courses</Link>
               </li>
+              <li className="mb-2">
+                <Link to="/categories">Categories</Link>
+              </li>
             </ul>
           </div>
 

@@ -66,7 +66,7 @@ const CategoriesPage = () => {
     visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   };
   return (
-    <main className="py-8 mt-16 min-h-screen">
+    <main className="min-h-screen">
       <SEO
         title="Categories - Explore Our Course Categories"
         description="Discover our wide range of course categories. Find the perfect category that fits your learning interests and goals."
@@ -75,10 +75,10 @@ const CategoriesPage = () => {
       />
       <div
         className="relative w-full h-screen md:h-[40vh] lg:h-[50vh]  bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url('/images/slider1.webp')` }}
+        style={{ backgroundImage: `url('/images/bgcat.jpg')` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col md:justify-end justify-center items-center text-center">
-          <div className="bg-gradient-to-r from-primary to-secondary max-w-7xl w-full p-8 mb-[-130px] rounded-lg shadow-2xl space-y-8">
+          <div className="bg-gray-800 max-w-7xl w-full p-5 mb-[-130px] rounded-lg shadow-2xl space-y-8">
             <motion.h1
               className="text-5xl font-secondary font-bold text-white"
               initial={{ opacity: 0, y: -50 }}
@@ -174,10 +174,10 @@ const CategoriesPage = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-4xl font-bold mb-6 mt-36 text-center">
+      <h1 className="text-5xl font-bold mb-6 py-6 mt-36 text-center">
         Categories Page
       </h1>
-      <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-4  gap-6">
+      <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 md:grid-cols-5 gap-4 px-6 py-8 ">
         {categorie.map((category) => (
           <Suspense fallback={<Loading />} key={category.id}>
             <CategoryCard key={category.id} category={category} />
