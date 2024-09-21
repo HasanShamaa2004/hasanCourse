@@ -3,21 +3,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { motion } from "framer-motion";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import {
-  MenuItem,
-  InputLabel,
-  FormControl,
-  TextField,
-  IconButton,
-  InputAdornment,
-} from "@mui/material";
+// import {
+//   MenuItem,
+//   InputLabel,
+//   FormControl,
+//   TextField,
+//   IconButton,
+//   InputAdornment,
+// } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import CategoryIcon from "@mui/icons-material/Category";
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import Select from "react-select";
+// import LocationOnIcon from "@mui/icons-material/LocationOn";
+// import CategoryIcon from "@mui/icons-material/Category";
+// import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+// import Select from "react-select";
 import { FaChevronDown } from "react-icons/fa";
-import InputFrame from "./InputFrame";
+// import InputFrame from "./InputFrame";
 const slideIn = {
   hidden: { opacity: 0, y: "100%" },
   visible: { opacity: 1, y: "0%" },

@@ -2,37 +2,37 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SEO from "../components/SEO";
 import { Category, Course } from "../types";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay } from "swiper/modules";
 import { Suspense, lazy } from "react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import Loading from "../components/Loading/Loading";
 import HowMyCourses from "../components/HowMyCourses";
 import Statistics from "../components/Statistics";
 import SocialIcons from "../components/SocialIcons/SocialIcons";
 import NewsTicker from "../components/NewsTicker/NewsTicker";
-import { motion } from "framer-motion";
-import Select, { selectClasses } from "@mui/joy/Select";
-import Option from "@mui/joy/Option";
-import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
-import { FaListAlt, FaMapMarkerAlt, FaSearch } from "react-icons/fa";
+// import { motion } from "framer-motion";
+// import Select, { selectClasses } from "@mui/joy/Select";
+// import Option from "@mui/joy/Option";
+// import KeyboardArrowDown from "@mui/icons-material/KeyboardArrowDown";
+// import { FaListAlt, FaMapMarkerAlt, FaSearch } from "react-icons/fa";
 import HeroSection from "../components/HeroSection";
 const CategoryCardHover = lazy(() => import("../components/CategoryCardHover"));
 const CardCourses = lazy(() => import("../components/CardCourses/CardCourses"));
 
 const Home = () => {
   const [courses, setCourses] = useState<Course[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
-  const [locations, setLocations] = useState<string[]>([]);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+  const [_categories, setCategories] = useState<string[]>([]);
+  const [_locations, setLocations] = useState<string[]>([]);
+  // const [searchQuery, _setSearchQuery] = useState<string>("");
+  // const [selectedCategory, _setSelectedCategory] = useState<string | null>(null);
+  // const [selectedLocation, _setSelectedLocation] = useState<string | null>(null);
 
-  const navigate = useNavigate();
-  const images1 = ["/images/slider1.webp", "/images/bgcat.jpg"];
+  // const navigate = useNavigate();
+  // const images1 = ["/images/slider1.webp", "/images/bgcat.jpg"];
   const images = [
     "/images/trust/trust1.png",
     "/images/trust/trust2.png",
@@ -89,13 +89,13 @@ const Home = () => {
     fetchCategories();
   }, []);
 
-  const handleSearch = () => {
-    const searchParams = new URLSearchParams();
-    if (searchQuery) searchParams.set("title", searchQuery);
-    if (selectedCategory) searchParams.set("category", selectedCategory);
-    if (selectedLocation) searchParams.set("location", selectedLocation);
-    navigate(`/courses?${searchParams.toString()}`);
-  };
+  // const handleSearch = () => {
+  //   const searchParams = new URLSearchParams();
+  //   if (searchQuery) searchParams.set("title", searchQuery);
+  //   if (selectedCategory) searchParams.set("category", selectedCategory);
+  //   if (selectedLocation) searchParams.set("location", selectedLocation);
+  //   navigate(`/courses?${searchParams.toString()}`);
+  // };
 
   return (
     <main className="bg-white text-gray-700 min-h-screen">
